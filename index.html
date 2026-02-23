@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramanda Portfolios</title>
+  <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#home" class="brand text-xl font-extrabold tracking-tight">
+      <span class="gradient-text">DR</span><span style="color:var(--text)">.</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#home"       class="nav-link active">Home</a>
+      <a href="#about"      class="nav-link">About</a>
+      <a href="#projects"   class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#contact"    class="nav-link">Contact</a>
+    </div>
+    <button id="hamburger" class="md:hidden text-xl focus:outline-none" style="color:var(--text)" aria-label="Open menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  
+  <div id="mobile-menu" class="hidden md:hidden px-6 py-4 flex flex-col gap-4">
+    <a href="#home"       class="nav-link">Home</a>
+    <a href="#about"      class="nav-link">About</a>
+    <a href="#projects"   class="nav-link">Projects</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#contact"    class="nav-link">Contact</a>
+  </div>
+</nav>
+
+
+<!--HOME -->
+<section id="home" class="relative min-h-screen pt-24 md:pt-32 lg:pt-40 pb-20">
+  <div class="hero-bg"></div>
+  <div id="astronaut" class="absolute right-10 top-1/2 -translate-y-1/2 w-[420px] opacity-90"></div>
+
+  
+  <div class="particle" style="top:20%;left:15%;animation-delay:0s;animation-duration:9s"></div>
+  <div class="particle" style="top:70%;left:10%;animation-delay:2s;animation-duration:7s"></div>
+  <div class="particle" style="top:40%;left:80%;animation-delay:4s;animation-duration:11s"></div>
+  <div class="particle" style="top:60%;left:60%;animation-delay:1s;animation-duration:8s"></div>
+  <div class="particle" style="top:30%;left:45%;animation-delay:3s;animation-duration:10s"></div>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <p class="text-lg font-medium mb-2 fade-up visible" style="color:var(--muted);transition-delay:0.08s">Hello, I'm</p>
+      <h1 class="hero-title text-white mb-4 fade-up visible" style="transition-delay:0.16s">
+        <span class="gradient-text">Dea Ramanda</span>
+      </h1>
+      <div class="text-xl md:text-2xl font-semibold mb-6 fade-up visible" style="color:var(--text);transition-delay:0.24s">
+        <span id="typed-text">Data</span><span class="cursor"></span>
+      </div>
+
+      <div class="flex flex-wrap gap-4 fade-up visible" style="transition-delay:0.4s">
+        <a href="your-cv.pdf" download class="btn-primary">
+          <i class="fas fa-download text-sm"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="py-24 relative">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="mb-14 fade-up">
+      <p class="section-label mb-2">Get to know me</p>
+      <h2 class="section-title text-white">About Me</h2>
+      <div class="divider mt-4"></div>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      <!-- Photo + Intro (2 cols) -->
+      <div class="bento-card md:col-span-2 fade-up">
+        <div class="flex items-start gap-6">
+          <div class="photo-ring">
+            <img src="profile.jpg" alt="Your Name" style="width:100%;height:100%;border-radius:50%;object-fit:cover">
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Dea Ramanda</h3>
+            <p class="text-sm leading-relaxed" style="color:var(--muted)">
+              I'm a data enthusiast with a background in computer science. I love uncovering patterns in data, building predictive models, and communicating insights through compelling visualizations. Currently exploring bussinenss analysis.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timezone card -->
+      <div class="bento-card fade-up flex flex-col justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-widest mb-2" style="color:var(--muted)">📍 Location / Timezone</p>
+          <!-- ✏️ EDIT -->
+          <p class="font-semibold text-lg text-white">Jakarta, Indonesia</p>
+          <p class="text-sm mt-1" style="color:var(--muted)">UTC +7 · WIB</p>
+        </div>
+        <div id="clock" class="text-3xl font-bold gradient-text mt-4" style="font-family:'Syne',sans-serif"></div>
+      </div>
+
+      <div class="bento-card md:col-span-2 fade-up">
+        <p class="text-xs uppercase tracking-widest mb-4" style="color:var(--muted)">🛠 Stack & Tools</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill"><i class="fab fa-python text-xs"></i> Python</span>
+          <span class="skill-pill">Pandas</span>
+          <span class="skill-pill">NumPy</span>
+          <span class="skill-pill">Scikit-Learn</span>
+          <span class="skill-pill">TensorFlow</span>
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">Keras</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">Tableau</span>
+          <span class="skill-pill">Streamlit</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Jupyter</span>
+          <span class="skill-pill">Google Colab</span>
+        </div>
+        <p class="text-xs uppercase tracking-widest mb-4 mt-4" style="color:var(--muted)">🛹 Design & other</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill">Webflow</span>
+          <span class="skill-pill">Farmer</span>
+          <span class="skill-pill">Adobe Ilustrator</span>
+          <span class="skill-pill">Inkscape</span>
+        </div>
+      </div>
+      <div class="bento-card fade-up">
+        <p class="text-xs uppercase tracking-widest mb-4" style="color:var(--muted)">🎯 Hobbies</p>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">📊</span> Reading a book (Find my goodreads)</div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">✍️</span> Writing on Blog (Find my goodreads)</div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">🎮</span> Minesweeper & Strategy Games</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24 relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 fade-up">
+      <p class="section-label mb-2">What I've built</p>
+      <h2 class="section-title text-white">Projects</h2>
+      <div class="divider mt-4"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="project-card fade-up">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">🌍</span>
+          <span class="text-xs uppercase tracking-widest" style="color:var(--muted)">Data Visualization</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" style="font-family:'Syne',sans-serif">Sales Market Dashboard</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">
+          An interactive Business Intelligence dashboard to analyze sales performance, customer behavior, and product insights.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Streamlit</span>
+          <span class="tech-tag">Plotly</span>
+          <span class="tech-tag">Pandas</span>
+        </div>
+        <button class="btn-read-more" onclick="openModal(0)">
+          Read More <i class="fas fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+      
+      <div class="project-card fade-up">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">🏥</span>
+          <span class="text-xs uppercase tracking-widest" style="color:var(--muted)">Computer Vision</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" style="font-family:'Syne',sans-serif">Tumbler Classifier</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">
+          CNN classifier for X-ray images detecting pneumonia with 96% accuracy, deployed as a Streamlit app.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">Transfer Learning</span>
+          <span class="tech-tag">MobileNetV2</span>
+          <span class="tech-tag">HuggingFace</span>
+        </div>
+        <button class="btn-read-more" onclick="openModal(1)">
+          Read More <i class="fas fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+      
+      <div class="project-card fade-up">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">🏥</span>
+          <span class="text-xs uppercase tracking-widest" style="color:var(--muted)">Computer Vision</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" style="font-family:'Syne',sans-serif">Sign Language Real Time Detection</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">
+          CNN classifier for X-ray images detecting pneumonia with 96% accuracy, deployed as a Streamlit app.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">Transfer Learning</span>
+          <span class="tech-tag">MobileNetV2</span>
+          <span class="tech-tag">HuggingFace</span>
+        </div>
+        <button class="btn-read-more" onclick="openModal(2)">
+          Read More <i class="fas fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">🛒</span>
+          <span class="text-xs uppercase tracking-widest" style="color:var(--muted)">Recommender System</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" style="font-family:'Syne',sans-serif">E-Commerce Recommender</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">
+          Hybrid collaborative + content-based recommender that improved CTR by 23% in A/B testing.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-tag">CNN</span>
+          <span class="tech-tag">Surprise</span>
+          <span class="tech-tag">Spark</span>
+          <span class="tech-tag">Redis</span>
+        </div>
+        <button class="btn-read-more" onclick="openModal(3)">
+          Read More <i class="fas fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Project Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="flex items-center justify-between mb-5">
+      <h3 id="modal-title" class="text-xl font-bold text-white" style="font-family:'Syne',sans-serif"></h3>
+      <button onclick="closeModalDirect()" class="text-xl transition-colors" style="color:var(--muted)"
+        onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--muted)'">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <p id="modal-category" class="text-xs uppercase tracking-widest mb-4" style="color:var(--amber)"></p>
+    <p id="modal-description" class="text-sm leading-relaxed mb-6" style="color:var(--muted)"></p>
+    <div class="mb-4">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:var(--muted)">Key Highlights</p>
+      <ul id="modal-highlights" class="text-sm space-y-2" style="color:var(--text)"></ul>
+    </div>
+    <div class="mb-6">
+      <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">Technologies Used</p>
+      <div id="modal-tech" class="flex flex-wrap gap-2"></div>
+    </div>
+    <div class="flex gap-3">
+      <a id="modal-github" href="#" target="_blank" class="btn-outline text-sm" style="flex:1;justify-content:center">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a id="modal-demo" href="#" target="_blank" class="btn-primary text-sm" style="flex:1;justify-content:center">
+        <i class="fas fa-external-link-alt"></i> Live Demo
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="mb-14 fade-up">
+      <p class="section-label mb-2">My journey</p>
+      <h2 class="section-title text-white">Experience</h2>
+      <div class="divider mt-4"></div>
+    </div>
+
+    <div class="flex flex-col gap-6">
+
+      <!-- ✏️ EXPERIENCE 1 -->
+      <div class=" fade-up">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="badge" style="font-size:0.7rem">2023 – Present</span>
+              <span class="w-2 h-2 rounded-full" style="background:var(--amber-light)"></span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Workflow Administrator</h3>
+            <p class="text-sm font-medium mb-3" style="color:var(--amber-light)">Sinarmas Distribusi Nusantara · Contract</p>
+            <p class="text-sm leading-relaxed" style="color:var(--muted)">
+              Developed and deployed machine learning models for customer churn prediction, resulting in a 15% reduction in churn rate. Built automated ETL pipelines using Apache Spark and maintained data quality across multiple data sources. Led a team of 3 junior analysts.
+            </p>
+          </div>
+          <!-- ✏️ EDIT: href to credential -->
+          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
+            <i class="fas fa-certificate"></i> View Credential
+          </a>
+        </div>
+      </div>
+
+      
+      <div class=" fade-up">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="badge" style="font-size:0.7rem">2022 – 2023</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Fullstack Developer Cohort</h3>
+            <p class="text-sm font-medium mb-3" style="color:var(--amber-light)">DBS Coding Camp · Internship</p>
+            <p class="text-sm leading-relaxed" style="color:var(--muted)">
+              Assisted in building NLP pipelines for document classification. Fine-tuned BERT models for domain-specific tasks. Created Tableau dashboards and presented insights to cross-functional teams.
+            </p>
+          </div>
+          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
+            <i class="fas fa-certificate"></i> View Credential
+          </a>
+        </div>
+      </div>
+
+      <div class=" fade-up">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="badge" style="font-size:0.7rem;background:rgba(234,88,12,0.12);border-color:rgba(234,88,12,0.3);color:#fb923c">2022 – 2023</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif;">Fullstack Developer Cohort</h3>
+            <p class="text-sm font-medium mb-3" style="color:#fb923c">DBS Coding Camp · Internship</p>
+            <p class="text-sm leading-relaxed" style="color:var(--muted)">
+              Assisted in building NLP pipelines for document classification. Fine-tuned BERT models for domain-specific tasks. Created Tableau dashboards and presented insights to cross-functional teams.
+            </p>
+          </div>
+          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
+            <i class="fas fa-certificate"></i> View Credential
+          </a>
+        </div>
+      </div>
+
+      
+      <div class=" fade-up">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="badge" style="font-size:0.7rem;background:rgba(234,88,12,0.12);border-color:rgba(234,88,12,0.3);color:#fb923c">2018 – 2022</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Machine Learning Cohort</h3>
+            <p class="text-sm font-medium mb-3" style="color:#fb923c">University Name · GPA: 3.8 / 4.0</p>
+            <p class="text-sm leading-relaxed" style="color:var(--muted)">
+              Majored in data science with a focus on statistical modeling and machine learning. Thesis on "Explainable AI for Medical Diagnosis." Active member of the Data Science Club.
+            </p>
+          </div>
+          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
+            <i class="fas fa-scroll"></i> View Transcript
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT-->
+<section id="contact" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="mb-14 fade-up">
+      <p class="section-label mb-2">Let's work together</p>
+      <h2 class="section-title text-white">Contact</h2>
+      <div class="divider mt-4"></div>
+    </div>
+
+    <div class="flex flex-col items-center gap-12">
+      <div class="fade-up w-full max-w-3xl">
+        <div>
+          <p class="text-xs uppercase tracking-widest mb-4" style="color:var(--muted)">Find me on</p>
+          <div class="flex flex-col gap-3">
+            <a href="https://linkedin.com/in/adnamard" target="_blank" class="social-link">
+              <i class="fab fa-linkedin-in w-5" style="color:#60a5fa"></i>
+              <div>
+                <div class="font-medium text-sm">LinkedIn</div>
+                <div class="text-xs" style="color:var(--muted)">linkedin.com/in/adnamard</div>
+              </div>
+              <i class="fas fa-arrow-right text-xs ml-auto"></i>
+            </a>
+            <a href="https://github.com/adnamard" target="_blank" class="social-link">
+              <i class="fab fa-github w-5" style="color:var(--text)"></i>
+              <div>
+                <div class="font-medium text-sm">GitHub</div>
+                <div class="text-xs" style="color:var(--muted)">github.com/adnamard</div>
+              </div>
+              <i class="fas fa-arrow-right text-xs ml-auto"></i>
+            </a>
+            <a href="https://medium.com/@adnamar" target="_blank" class="social-link">
+              <i class="fab fa-medium w-5" style="color:#4ade80"></i>
+              <div>
+                <div class="font-medium text-sm">Medium</div>
+                <div class="text-xs" style="color:var(--muted)">medium.com/@adnamard</div>
+              </div>
+              <i class="fas fa-arrow-right text-xs ml-auto"></i>
+            </a>
+            <a href="https://s.id/ramanda-gardens" target="_blank" class="social-link">
+              <i class="fas fa-book w-5" style="color:var(--text)"></i>
+              <div>
+                <div class="font-medium text-sm">Notion</div>
+                <div class="text-xs" style="color:var(--muted)">notion.so/Ramanda-gardens</div>
+              </div>
+              <i class="fas fa-arrow-right text-xs ml-auto"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">📬 Direct Email</p>
+          <!-- ✏️ EDIT -->
+          <a href="mailto:your.email@example.com" class="font-medium hover:underline" style="color:var(--amber-light)">
+            iamadnamar@gmail.com
+          </a>
+          <p class="text-xs mt-2" style="color:var(--muted)">I typically respond within 24–48 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer class="py-8 text-center border-t" style="border-color:var(--border)">
+  <p class="text-sm" style="color:var(--muted)">
+    <!-- ✏️ EDIT -->
+    © 2024 adnamard · Built with ❤️ and lots of data
+  </p>
+</footer>
+
+
+<!-- Portfolio JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
