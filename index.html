@@ -6,6 +6,7 @@
   <title>Ramanda Portfolios</title>
   <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
@@ -40,8 +41,6 @@
   </div>
 </nav>
 
-
-<!--HOME -->
 <section id="home" class="relative min-h-screen pt-24 md:pt-32 lg:pt-40 pb-20">
   <div class="hero-bg"></div>
   <div id="astronaut" class="absolute right-10 top-1/2 -translate-y-1/2 w-[420px] opacity-90"></div>
@@ -63,7 +62,7 @@
       </div>
 
       <div class="flex flex-wrap gap-4 fade-up visible" style="transition-delay:0.4s">
-        <a href="your-cv.pdf" download class="btn-primary">
+        <a href="resume.pdf" download class="btn-primary">
           <i class="fas fa-download text-sm"></i> Download CV
         </a>
       </div>
@@ -82,10 +81,7 @@
       <div class="divider mt-4"></div>
     </div>
 
-    <!-- Bento Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-      <!-- Photo + Intro (2 cols) -->
       <div class="bento-card md:col-span-2 fade-up">
         <div class="flex items-start gap-6">
           <div class="photo-ring">
@@ -94,17 +90,15 @@
           <div>
             <h3 class="text-xl font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Dea Ramanda</h3>
             <p class="text-sm leading-relaxed" style="color:var(--muted)">
-              I'm a data enthusiast with a background in computer science. I love uncovering patterns in data, building predictive models, and communicating insights through compelling visualizations. Currently exploring bussinenss analysis.
+              I'm a data enthusiast with a background in computer science. I love uncovering patterns in data, building predictive models, and communicating insights through compelling visualizations. Currently exploring bussiness analysis.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Timezone card -->
       <div class="bento-card fade-up flex flex-col justify-between">
         <div>
           <p class="text-xs uppercase tracking-widest mb-2" style="color:var(--muted)">📍 Location / Timezone</p>
-          <!-- ✏️ EDIT -->
           <p class="font-semibold text-lg text-white">Jakarta, Indonesia</p>
           <p class="text-sm mt-1" style="color:var(--muted)">UTC +7 · WIB</p>
         </div>
@@ -139,19 +133,17 @@
         </div>
       </div>
       <div class="bento-card fade-up">
-        <p class="text-xs uppercase tracking-widest mb-4" style="color:var(--muted)">🎯 Hobbies</p>
+        <p class="text-xs uppercase tracking-widest mb-4" style="color:var(--muted)">What I love (In case we shared the same things)</p>
         <div class="flex flex-col gap-3">
-          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">📊</span> Reading a book (Find my goodreads)</div>
-          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">✍️</span> Writing on Blog (Find my goodreads)</div>
-          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">🎮</span> Minesweeper & Strategy Games</div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">📖</span> Reading a book (Find my goodreads below)</div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">✍️</span> Writing on Blog</div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--text)"><span class="text-xl">🎻</span> Listening Classical Music (Dm me for good recommendation)</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- PROJECTS -->
 <section id="projects" class="py-24 relative">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14 fade-up">
@@ -188,7 +180,7 @@
         </div>
         <h3 class="text-lg font-bold text-white mb-2" style="font-family:'Syne',sans-serif">Tumbler Classifier</h3>
         <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">
-          CNN classifier for X-ray images detecting pneumonia with 96% accuracy, deployed as a Streamlit app.
+          A computer vision model using MobileNetV2 transfer learning that achieved 96% accuracy in classifying reusable vs non-reusable drink containers, deployed publicly on Hugging Face for real-world testing.
         </p>
         <div class="flex flex-wrap gap-2 mb-5">
           <span class="tech-tag">TensorFlow</span>
@@ -208,7 +200,7 @@
         </div>
         <h3 class="text-lg font-bold text-white mb-2" style="font-family:'Syne',sans-serif">Sign Language Real Time Detection</h3>
         <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">
-          CNN classifier for X-ray images detecting pneumonia with 96% accuracy, deployed as a Streamlit app.
+          A real-time sign language recognition system trained on a custom SIBI video dataset, achieving 93% accuracy using deep learning and computer vision techniques to support inclusive communication.
         </p>
         <div class="flex flex-wrap gap-2 mb-5">
           <span class="tech-tag">TensorFlow</span>
@@ -228,7 +220,7 @@
         </div>
         <h3 class="text-lg font-bold text-white mb-2" style="font-family:'Syne',sans-serif">E-Commerce Recommender</h3>
         <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">
-          Hybrid collaborative + content-based recommender that improved CTR by 23% in A/B testing.
+          A Neural Collaborative Filtering-based recommendation system that achieved 87% accuracy in predicting user preferences, generating personalized content recommendations based on interaction patterns.
         </p>
         <div class="flex flex-wrap gap-2 mb-5">
           <span class="tech-tag">CNN</span>
@@ -244,8 +236,6 @@
     </div>
   </div>
 </section>
-
-<!-- Project Modal -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal-box">
     <div class="flex items-center justify-between mb-5">
@@ -277,37 +267,29 @@
 </div>
 
 
-<!-- EXPERIENCE -->
 <section id="experience" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
 
     <div class="mb-14 fade-up">
       <p class="section-label mb-2">My journey</p>
-      <h2 class="section-title text-white">Experience</h2>
+      <h2 class="section-title text-white">Professional & Program Experience</h2>
       <div class="divider mt-4"></div>
     </div>
 
     <div class="flex flex-col gap-6">
-
-      <!-- ✏️ EXPERIENCE 1 -->
       <div class=" fade-up">
         <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-2">
-              <span class="badge" style="font-size:0.7rem">2023 – Present</span>
+              <span class="badge" style="font-size:0.7rem">July 2025 – Oct 2025</span>
               <span class="w-2 h-2 rounded-full" style="background:var(--amber-light)"></span>
             </div>
-            
             <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Workflow Administrator</h3>
             <p class="text-sm font-medium mb-3" style="color:var(--amber-light)">Sinarmas Distribusi Nusantara · Contract</p>
             <p class="text-sm leading-relaxed" style="color:var(--muted)">
-              Developed and deployed machine learning models for customer churn prediction, resulting in a 15% reduction in churn rate. Built automated ETL pipelines using Apache Spark and maintained data quality across multiple data sources. Led a team of 3 junior analysts.
+              Managed and verified store order data using Unilever Sales & Distribution (S&D) system and ensured data accuracy through validation and workflow monitoring processes.
             </p>
           </div>
-          <!-- ✏️ EDIT: href to credential -->
-          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
-            <i class="fas fa-certificate"></i> View Credential
-          </a>
         </div>
       </div>
 
@@ -316,15 +298,15 @@
         <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-2">
-              <span class="badge" style="font-size:0.7rem">2022 – 2023</span>
+              <span class="badge" style="font-size:0.7rem;background:rgba(234,88,12,0.12);border-color:rgba(234,88,12,0.3);color:#fb923c">Feb 2025 – July 2025</span>
             </div>
             <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Fullstack Developer Cohort</h3>
             <p class="text-sm font-medium mb-3" style="color:var(--amber-light)">DBS Coding Camp · Internship</p>
             <p class="text-sm leading-relaxed" style="color:var(--muted)">
-              Assisted in building NLP pipelines for document classification. Fine-tuned BERT models for domain-specific tasks. Created Tableau dashboards and presented insights to cross-functional teams.
+              Developed Single Page Applications (SPA) and Progressive Web Apps (PWA) with modular architecture using Webpack also designed and implemented responsive UI using Tailwind CSS and JavaScript.
             </p>
           </div>
-          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
+          <a href="https://drive.google.com/file/d/1mabYsYZum24izSY2oC4HuUhmB4V2QsbE/view?usp=sharing" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
             <i class="fas fa-certificate"></i> View Credential
           </a>
         </div>
@@ -334,45 +316,23 @@
         <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-2">
-              <span class="badge" style="font-size:0.7rem;background:rgba(234,88,12,0.12);border-color:rgba(234,88,12,0.3);color:#fb923c">2022 – 2023</span>
+              <span class="badge" style="font-size:0.7rem;background:rgba(234,88,12,0.12);border-color:rgba(234,88,12,0.3);color:#fb923c">Feb 2024 – July 2024</span>
             </div>
-            <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif;">Fullstack Developer Cohort</h3>
-            <p class="text-sm font-medium mb-3" style="color:#fb923c">DBS Coding Camp · Internship</p>
+            <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Fullstack Developer Cohort</h3>
+            <p class="text-sm font-medium mb-3" style="color:var(--amber-light)">DBS Coding Camp · Internship</p>
             <p class="text-sm leading-relaxed" style="color:var(--muted)">
-              Assisted in building NLP pipelines for document classification. Fine-tuned BERT models for domain-specific tasks. Created Tableau dashboards and presented insights to cross-functional teams.
+              Built and optimized machine learning models using TensorFlow and Scikit-learn for recommendation and classification tasks and developed end-to-end ML workflows from preprocessing to inference-ready models.
             </p>
           </div>
-          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
+          <a href="https://drive.google.com/file/d/1sMVKq7z-SsspjcG7vFVUnRtDilQglOep/view?usp=sharing" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
             <i class="fas fa-certificate"></i> View Credential
           </a>
         </div>
       </div>
-
-      
-      <div class=" fade-up">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-          <div class="flex-1">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="badge" style="font-size:0.7rem;background:rgba(234,88,12,0.12);border-color:rgba(234,88,12,0.3);color:#fb923c">2018 – 2022</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-1" style="font-family:'Syne',sans-serif">Machine Learning Cohort</h3>
-            <p class="text-sm font-medium mb-3" style="color:#fb923c">University Name · GPA: 3.8 / 4.0</p>
-            <p class="text-sm leading-relaxed" style="color:var(--muted)">
-              Majored in data science with a focus on statistical modeling and machine learning. Thesis on "Explainable AI for Medical Diagnosis." Active member of the Data Science Club.
-            </p>
-          </div>
-          <a href="#" target="_blank" class="btn-outline whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.75rem">
-            <i class="fas fa-scroll"></i> View Transcript
-          </a>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- CONTACT-->
 <section id="contact" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
 
@@ -424,8 +384,7 @@
 
         <div class="bento-card">
           <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">📬 Direct Email</p>
-          <!-- ✏️ EDIT -->
-          <a href="mailto:your.email@example.com" class="font-medium hover:underline" style="color:var(--amber-light)">
+          <a href="mailto:iamadnamar@gmail.com" class="font-medium hover:underline" style="color:var(--amber-light)">
             iamadnamar@gmail.com
           </a>
           <p class="text-xs mt-2" style="color:var(--muted)">I typically respond within 24–48 hours.</p>
@@ -439,14 +398,9 @@
 
 <footer class="py-8 text-center border-t" style="border-color:var(--border)">
   <p class="text-sm" style="color:var(--muted)">
-    <!-- ✏️ EDIT -->
-    © 2024 adnamard · Built with ❤️ and lots of data
+    © 2025 adnamard · Built with ❤️ and lots of data
   </p>
 </footer>
-
-
-<!-- Portfolio JavaScript -->
 <script src="script.js"></script>
-
 </body>
 </html>

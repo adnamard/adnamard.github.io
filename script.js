@@ -189,5 +189,7 @@ lottie.loadAnimation({
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: '404 error page with cat.json' // pastikan file ini satu folder
+    path: '404 error page with cat.json' 
   });
+
+  
