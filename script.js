@@ -116,7 +116,7 @@ const projects = [
     highlights: [
       '✅ 96% accuracy on benchmark test set',
       '✅ Implemented transfer learning with MobileNetV2',
-      '✅ Public deployment on Hugging Face',
+      '⚙️ Public deployment on Hugging Face',
     ],
     tech: ['Python', 'TensorFlow/Keras', 'HuggingFace', 'MobileNetV2'],
     github: 'https://github.com/adnamard/Tumblr-Detection',
@@ -128,7 +128,7 @@ const projects = [
     description: 'Tabir is an AI-powered sign language translation system designed to reduce communication barriers for the deaf community. Using Computer Vision and Deep Learning, the system detects and translates SIBI (Indonesian Sign Language System) gestures captured through manually collected video datasets. This project aims to improve accessibility in education and employment through real-time AI interpretation.',
     highlights: [
       '✅ Real-time sign language detection using Computer Vision',
-      '✅ Custom video dataset collection (SIBI-based)',
+      '📊 Custom video dataset collection (SIBI-based)',
       '✅ Designed as an AI bridge for inclusive communication',
     ],
     tech: ['Python', 'Keras', 'TensorFlow', 'MediaPipe', 'MobileNetV1'],
@@ -136,14 +136,14 @@ const projects = [
     demo: 'https://melodic-fudge-91078b.netlify.app/'
   },
   {
-    title: 'Memorabilia – Recommendation System',
+    title: 'Memorabilia – Book Recommendation System',
     category: 'Machine Learning · Recommender System',
-    description: 'A deep learning system that classifies chest X-ray images to detect pneumonia using a fine-tuned ResNet-50 architecture. The model was trained on the NIH Chest X-Ray dataset and deployed as an interactive web app for medical practitioners.',
+    description: 'A personalized book recommendation system designed to increase reading engagement and literacy rates in Indonesia. The system leverages Neural Collaborative Filtering to generate personalized book suggestions based on user preferences and reading behavior. The project was developed as part of a mobile application called "Memorabilia", which enhances reader engagement through progress tracking and tailored recommendations while improving access to relevant books.',
     highlights: [
-      '✅ 96.2% accuracy, 95% sensitivity, 97% specificity',
-      '✅ Grad-CAM visualization for explainability',
-      '✅ Deployed as Streamlit web app',
-      '✅ DICOM format support for clinical use',
+      '📚 Personalized book recommendations using Neural Collaborative Filtering',
+      '📊 User reading progress tracking to encourage consistent reading habits',
+      '⚙️ Model served via REST API built with Flask',
+      '☁️ Deployed on Google Cloud Platform for scalable model access'
     ],
     tech: ['Python', 'TensorFlow/Keras', 'Neural Collaborative Filtering', 'Pandas'],
     github: 'https://github.com/Memorabillia/Memorabillia',
