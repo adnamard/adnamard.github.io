@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Can One Ship Break Global Trade? — Case Study — Dea Ramanda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="cs-header">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../index.html#projects" class="cs-back"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+    <a href="../index.html" class="brand text-lg font-semibold tracking-tight" style="color:var(--navy)">Dea<span style="color:var(--gold)">.</span></a>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="relative pt-16 pb-14">
+  <div class="cs-hero-bg"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <p class="hero-kicker mb-5 fade-up">Case Study · Data Storytelling / Operations Analytics</p>
+    <h1 class="hero-title mb-5 fade-up" style="font-size:clamp(2rem,4.4vw,3.2rem)">Can One Ship Break Global Trade?</h1>
+    <p class="hero-question fade-up" style="max-width:52ch">
+      In March 2021, one grounded ship in the Suez Canal held up roughly 12% of global trade for six days.
+      This project tests whether that kind of shock — or something far more mundane — is really what drives
+      shipping delays.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-6 fade-up">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Pandas</span>
+      <span class="tech-tag">Plotly</span>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6">
+
+  <!-- The Challenge -->
+  <div class="max-w-2xl mb-16 fade-up">
+    <p class="section-label mb-2">The challenge</p>
+    <h2 class="section-title serif mb-5">Business context</h2>
+    <p class="section-lede">
+      Companies plan supply chains around the assumption that shipping is predictable. Leadership needed to know
+      what actually drives delay risk — vessel age, terminal handling, or one-off shocks like Suez — before
+      deciding where to invest: newer ships, better terminal contracts, or contingency buffers.
+    </p>
+  </div>
+
+  <!-- Questions I Asked -->
+  <div class="mb-20 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-6" style="color:var(--muted)">Questions I asked</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="question-card fade-up">
+        <span class="emoji">🚢</span>
+        <p>Are older vessels actually slower?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">📍</span>
+        <p>Which terminals create the real bottlenecks?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🌍</span>
+        <p>Did the Suez disruption really change operations?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Explore 1: vessel age vs speed -->
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">01 / EXPLORE THE DATA</p>
+      <h3 class="explore-title serif">Does an older fleet mean a slower fleet?</h3>
+      <p class="explore-text">
+        I grouped vessels into five age brackets and compared their average transit speed, expecting a clear
+        downward slope as ships got older.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-age-speed" style="width:100%;height:320px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Cargo vessels overall ran slower than expected, but vessel age barely moved the needle —
+        a 20-year-old ship kept nearly the same pace as a 5-year-old one.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-anchor text-xs"></i></div>
+
+  <!-- Explore 2: terminal bottlenecks -->
+  <div class="explore-block reverse fade-up">
+    <div>
+      <p class="explore-index">02 / CONTINUE THE INVESTIGATION</p>
+      <h3 class="explore-title serif">Which terminals create the real bottlenecks?</h3>
+      <p class="explore-text">
+        Next I compared average dwell time — hours spent waiting or docked — across six major terminals
+        along the route.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-terminal" style="width:100%;height:320px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>One terminal held vessels nearly twice as long as the others — the gap between terminals
+        was far larger than any regional difference in the data.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-anchor text-xs"></i></div>
+
+  <!-- Explore 3: Suez disruption -->
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">03 / CONTINUE THE INVESTIGATION</p>
+      <h3 class="explore-title serif">Did the Suez disruption really change operations?</h3>
+      <p class="explore-text">
+        Finally, I plotted daily transit volume through the canal across the six weeks around the March 2021
+        blockage.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-suez" style="width:100%;height:320px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Volume dropped sharply for about a week, then bounced back to normal within a month —
+        a sharp shock, but a short-lived one.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-chart-line text-xs"></i></div>
+
+  <!-- Final Dashboard -->
+  <div class="mb-10 fade-up" id="dashboard">
+    <p class="section-label mb-2">The conclusion, not the beginning</p>
+    <h2 class="section-title serif mb-4">Bringing it together</h2>
+    <p class="section-lede">
+      After validating each hypothesis individually, I summarized everything into one executive dashboard —
+      so a reader can get the whole story in ten seconds if they need to.
+    </p>
+  </div>
+  <div class="chart-frame mb-20 fade-up">
+    <div id="chart-dashboard" style="width:100%;height:520px"></div>
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="mb-10 fade-up">
+    <p class="section-label mb-2">Key takeaways</p>
+    <h2 class="section-title serif">What the data actually said</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20 fade-up">
+    <div class="takeaway-card fade-up">
+      <span class="emoji">🚢</span>
+      <p>The Suez disruption caused only temporary delays — the system recovered within weeks.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">📍</span>
+      <p>Terminal-level differences were larger than regional differences. Where you dock matters more than where you sail.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">⚙️</span>
+      <p>Operational efficiency mattered far more than vessel age — a slower, better-run fleet still wins.</p>
+    </div>
+  </div>
+
+  <!-- Business Recommendations -->
+  <div class="mb-8 fade-up">
+    <p class="section-label mb-2">So what should change</p>
+    <h2 class="section-title serif">Business recommendations</h2>
+  </div>
+  <div class="mb-20 fade-up">
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">01</p>
+      <p class="text-sm" style="color:var(--navy)">Stop budgeting for vessel-age risk. Fleet renewal has almost no effect on transit speed — redirect that capital toward terminal operations instead.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">02</p>
+      <p class="text-sm" style="color:var(--navy)">Renegotiate or diversify away from the slowest terminal, since it drives more schedule risk than any single global disruption did.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">03</p>
+      <p class="text-sm" style="color:var(--navy)">Build a lightweight monitoring dashboard on daily transit volume as an early-warning signal for blockage-like anomalies, rather than over-engineering for rare black-swan events.</p>
+    </div>
+  </div>
+
+  <!-- Reflection -->
+  <div class="bento-card max-w-3xl mb-24 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">Reflection</p>
+    <p class="text-sm" style="color:var(--navy-70)">
+      What surprised me most was how little vessel age mattered — I went in assuming it would be the headline
+      finding. I learned that the "obvious" hypothesis is usually the first one worth throwing out. If I did
+      this again, I'd pull in weather and customs-clearance data too, since dwell time is probably not just
+      a terminal problem.
+    </p>
+  </div>
+
+  <!-- Footer nav -->
+  <div class="flex flex-wrap items-center justify-between gap-4 pb-24 fade-up">
+    <a href="https://github.com/adnamard" target="_blank" class="btn-outline">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    <a href="../index.html#projects" class="btn-read-more">
+      <i class="fas fa-arrow-left text-xs"></i> Back to all projects
+    </a>
+  </div>
+</div>
+
+<footer class="py-8 text-center" style="border-top:1px solid var(--border)">
+  <p class="text-sm" style="color:var(--muted)">© 2026 Dea Ramanda · Built with data and a little curiosity</p>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+/* NOTE: sample/illustrative data — swap in the real dataset before publishing. */
+const COLORS = { navy: '#102542', navyMuted: 'rgba(16,37,66,0.55)', navyFaint: 'rgba(16,37,66,0.12)', gold: '#C9A227', goldSoft: '#E4C97A' };
+const FONT = { family: 'Inter, sans-serif', color: COLORS.navy, size: 12 };
+const commonLayout = {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  margin: { l: 44, r: 20, t: 10, b: 40 },
+  xaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+  yaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+};
+const commonConfig = { displayModeBar: false, responsive: true };
+
+const ageBrackets = ['0–5 yrs', '6–10 yrs', '11–15 yrs', '16–20 yrs', '21–25 yrs'];
+const avgSpeed     = [14.6, 14.3, 14.5, 14.1, 14.2];
+Plotly.newPlot('chart-age-speed', [{
+  x: ageBrackets, y: avgSpeed, type: 'bar',
+  marker: { color: COLORS.navy, opacity: 0.85 },
+  hovertemplate: '%{x}<br>Avg speed: %{y} knots<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Avg. speed (knots)', range: [12, 16] } }, commonConfig);
+
+const terminals = ['Terminal A', 'Terminal B', 'Terminal C', 'Terminal D', 'Terminal E', 'Terminal F'];
+const dwellHrs   = [18, 21, 39, 20, 24, 17];
+Plotly.newPlot('chart-terminal', [{
+  x: terminals, y: dwellHrs, type: 'bar',
+  marker: { color: dwellHrs.map(v => v > 30 ? COLORS.gold : COLORS.navy) },
+  hovertemplate: '%{x}<br>Avg dwell: %{y} hrs<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Avg. dwell time (hrs)' } }, commonConfig);
+
+const days = []; const volume = [];
+const start = new Date('2021-03-01');
+for (let i = 0; i < 60; i++) {
+  const d = new Date(start); d.setDate(d.getDate() + i);
+  days.push(d.toISOString().slice(0, 10));
+  let v = 48 + Math.sin(i / 5) * 2;
+  if (i >= 22 && i <= 28) v = 48 - (i - 22) * 6;
+  if (i > 28 && i <= 40) v = 20 + (i - 28) * 2.6;
+  volume.push(Math.round(v));
+}
+Plotly.newPlot('chart-suez', [{
+  x: days, y: volume, type: 'scatter', mode: 'lines',
+  line: { color: COLORS.navy, width: 2.5 }, fill: 'tozeroy', fillcolor: 'rgba(16,37,66,0.06)',
+  hovertemplate: '%{x}<br>Transits: %{y}<extra></extra>',
+}], {
+  ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Daily transits' },
+  shapes: [{ type: 'rect', xref: 'x', yref: 'paper', x0: days[22], x1: days[28], y0: 0, y1: 1, fillcolor: COLORS.gold, opacity: 0.12, line: { width: 0 } }],
+  annotations: [{ x: days[25], y: 1, yref: 'paper', yanchor: 'bottom', text: 'Blockage', showarrow: false, font: { size: 11, color: COLORS.gold } }],
+}, commonConfig);
+
+Plotly.newPlot('chart-dashboard', [
+  { x: ageBrackets, y: avgSpeed, type: 'bar', marker: { color: COLORS.navy }, xaxis: 'x', yaxis: 'y', name: 'Speed by age' },
+  { x: terminals, y: dwellHrs, type: 'bar', marker: { color: dwellHrs.map(v => v > 30 ? COLORS.gold : COLORS.navy) }, xaxis: 'x2', yaxis: 'y2', name: 'Dwell by terminal' },
+  { x: days, y: volume, type: 'scatter', mode: 'lines', line: { color: COLORS.navy, width: 2 }, xaxis: 'x3', yaxis: 'y3', name: 'Suez volume' },
+  { labels: ['On-time', 'Delayed'], values: [78, 22], type: 'pie', hole: 0.6, marker: { colors: [COLORS.navy, COLORS.gold] }, textinfo: 'label+percent', domain: { row: 1, column: 1 }, name: 'On-time rate' },
+], {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  grid: { rows: 2, columns: 2, pattern: 'independent' },
+  margin: { l: 40, r: 20, t: 30, b: 30 }, showlegend: false,
+}, commonConfig);
+</script>
+</body>
+</html>

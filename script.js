@@ -1,13 +1,15 @@
 /* ============================================================
-   PORTFOLIO — script.js
+   PORTFOLIO — script.js (homepage only)
+   Include common.js BEFORE this file — it provides fadeObserver
+   and the mobile-menu toggle.
    ============================================================ */
 
 /* ---- Typing animation ---- */
-// ✏️ EDIT: Update phrases to match your roles
 const phrases = [
-  'Data & ML Enthusiast',
-  'Data Scientist',
-  'Machine Learning Engineer',
+  'Turning messy data into',
+  'clear decisions',
+  'honest stories',
+  'dashboards people open',
 ];
 let phraseIdx = 0, charIdx = 0, deleting = false;
 const typedEl = document.getElementById('typed-text');
@@ -24,7 +26,7 @@ function type() {
       setTimeout(type, 400);
       return;
     }
-    setTimeout(type, 50);
+    setTimeout(type, 40);
   } else {
     charIdx++;
     typedEl.textContent = current.slice(0, charIdx);
@@ -32,42 +34,25 @@ function type() {
       setTimeout(() => { deleting = true; type(); }, 2200);
       return;
     }
-    setTimeout(type, 80);
+    setTimeout(type, 70);
   }
 }
 setTimeout(type, 1000);
 
+/* ---- Jakarta clock ---- */
 function updateClock() {
   const clockEl = document.getElementById('clock');
   if (!clockEl) return;
   const now = new Date();
-  const opts = {
-    timeZone: 'Asia/Jakarta',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  };
+  const opts = { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
   clockEl.textContent = now.toLocaleTimeString('en-US', opts);
 }
 updateClock();
 setInterval(updateClock, 1000);
 
-
-/* ---- Scroll fade-up reveal ---- */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-
 /* ---- Active nav link on scroll ---- */
-const sections  = ['home', 'about', 'projects', 'experience', 'contact'];
-const navLinks  = document.querySelectorAll('.nav-link');
-
+const sections = ['home', 'projects', 'about', 'learned', 'experience', 'contact'];
+const navLinks = document.querySelectorAll('.nav-link');
 window.addEventListener('scroll', () => {
   let current = 'home';
   sections.forEach(id => {
@@ -79,117 +64,52 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
-
-const hamburger  = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-  });
-}
-
-
-const projects = [
+/* ---- What I've Learned ---- */
+const learnings = [
   {
-    title: 'Market Sales Performance Dashboard',
-    category: 'Business Intelligence · Data Visualization',
-    description: 'An interactive Business Intelligence dashboard built using Streamlit, Pandas, and Plotly to analyze sales performance, customer behavior, and product insights. This project transforms transactional data into actionable insights to support revenue optimization and strategic decision-making.',
-    highlights: [
-      '✅ Interactive revenue analysis with daily trends and year comparison',
-      '✅ Customer segmentation: Biggest Spender vs Most Loyal Customer',
-      '✅ Category-level revenue and demand driver identification',
-      '✅ Item-level performance analysis to detect hero products and upsell opportunities',
-      '✅ Built with Streamlit for real-time data exploration',
-    ],
-    tech: ['Python', 'Plotly', 'Streamlit', 'Pandas'],
-    github: 'https://github.com/adnamard/Sales-Market-Dashboard',
-    demo: 'https://sales-market-dashboard-adnamar.streamlit.app/'
+    title: 'Coastal Land Change Analysis using Google Earth Engine',
+    summary: 'How I used cloud-based geospatial processing, AWEI_sh water masking, and ENDBSI to track land reclamation in North Jakarta over seven years.',
+    date: '2025-06',
+    status: 'Completed',
+    url: 'https://notion.so'
   },
   {
-    title: 'Reusable vs Non-Reusable Drink Container Classifier',
-    category: 'Computer Vision · Transfer Learning',
-    description: 'This thesis project, titled “Classification of Reusable and Non-Reusable Drink Containers,” applies transfer learning using MobileNetV2 to classify whether a person is using a tumbler or not. The model was trained, evaluated, and optimized for image-based detection, contributing to environmental awareness through AI-powered classification. The project has been deployed publicly on Hugging Face.',
-    highlights: [
-      '✅ 96% accuracy on benchmark test set',
-      '✅ Implemented transfer learning with MobileNetV2',
-      '⚙️ Public deployment on Hugging Face',
-    ],
-    tech: ['Python', 'TensorFlow/Keras', 'HuggingFace', 'MobileNetV2'],
-    github: 'https://github.com/adnamard/Tumblr-Detection',
-    demo: 'https://huggingface.co/spaces/Adnamar/Tumbler-detection'
+    title: 'Building a MobileNetV2 Image Classifier',
+    summary: 'Key takeaways on transfer learning, fine-tuning strategies, data augmentation, and deploying a Keras model to Hugging Face Spaces.',
+    date: '2024-07',
+    status: 'Completed',
+    url: 'https://notion.so'
   },
-  {
-    title: 'Tabir – Real-Time Sign Language Detection',
-    category: 'Computer Vision · Deep Learning',
-    description: 'Tabir is an AI-powered sign language translation system designed to reduce communication barriers for the deaf community. Using Computer Vision and Deep Learning, the system detects and translates SIBI (Indonesian Sign Language System) gestures captured through manually collected video datasets. This project aims to improve accessibility in education and employment through real-time AI interpretation.',
-    highlights: [
-      '✅ Real-time sign language detection using Computer Vision',
-      '📊 Custom video dataset collection (SIBI-based)',
-      '✅ Designed as an AI bridge for inclusive communication',
-    ],
-    tech: ['Python', 'Keras', 'TensorFlow', 'MediaPipe', 'MobileNetV1'],
-    github: 'https://github.com/adnamard/tabir-official',
-    demo: 'https://melodic-fudge-91078b.netlify.app/'
-  },
-  {
-    title: 'Memorabilia – Book Recommendation System',
-    category: 'Machine Learning · Recommender System',
-    description: 'A personalized book recommendation system designed to increase reading engagement and literacy rates in Indonesia. The system leverages Neural Collaborative Filtering to generate personalized book suggestions based on user preferences and reading behavior. The project was developed as part of a mobile application called "Memorabilia", which enhances reader engagement through progress tracking and tailored recommendations while improving access to relevant books.',
-    highlights: [
-      '📚 Personalized book recommendations using Neural Collaborative Filtering',
-      '📊 User reading progress tracking to encourage consistent reading habits',
-      '⚙️ Model served via REST API built with Flask',
-      '☁️ Deployed on Google Cloud Platform for scalable model access'
-    ],
-    tech: ['Python', 'TensorFlow/Keras', 'Neural Collaborative Filtering', 'Pandas'],
-    github: 'https://github.com/Memorabillia/Memorabillia',
-    demo: 'https://www.canva.com/design/DAGH7-DqJGQ/JgxpttpFMlXDblRSSH94Ew/view?utm_content=DAGH7-DqJGQ&utm_campaign=designshare&utm_medium=link&utm_source=editor#15'
-  }
 ];
-
-/* ---- Modal open/close ---- */
-function openModal(idx) {
-  const p = projects[idx];
-  document.getElementById('modal-title').textContent       = p.title;
-  document.getElementById('modal-category').textContent    = p.category;
-  document.getElementById('modal-description').textContent = p.description;
-
-  document.getElementById('modal-highlights').innerHTML =
-    p.highlights.map(h => `<li class="flex items-start gap-2">${h}</li>`).join('');
-
-  document.getElementById('modal-tech').innerHTML =
-    p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
-
-  document.getElementById('modal-github').href = p.github;
-  document.getElementById('modal-demo').href   = p.demo;
-
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+const statusConfig = {
+  'Completed':   { bg: 'rgba(16,37,66,0.06)', border: 'rgba(16,37,66,0.18)', color: '#102542', dot: '#102542' },
+  'In Progress': { bg: 'rgba(201,162,39,0.12)', border: 'rgba(201,162,39,0.3)', color: '#C9A227', dot: '#C9A227' },
+  'Planned':     { bg: 'rgba(16,37,66,0.04)', border: 'rgba(16,37,66,0.12)', color: 'rgba(16,37,66,0.55)', dot: 'rgba(16,37,66,0.55)' }
+};
+function formatLearnDate(d) {
+  const [y, m] = d.split('-');
+  return new Date(y, m - 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
-
-function closeModal(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+function renderLearnings() {
+  const grid = document.getElementById('learned-grid');
+  if (!grid) return;
+  grid.innerHTML = learnings.map(l => {
+    const s = statusConfig[l.status] || statusConfig['Planned'];
+    return `
+      <a href="${l.url}" target="_blank" rel="noopener" class="learn-card fade-up" aria-label="${l.title}">
+        <div class="learn-card-inner">
+          <div class="learn-card-header">
+            <span class="learn-status-badge" style="background:${s.bg};border-color:${s.border};color:${s.color}">
+              <span class="learn-dot" style="background:${s.dot}"></span>${l.status}
+            </span>
+            <i class="fas fa-external-link-alt learn-link-icon"></i>
+          </div>
+          <h3 class="learn-title">${l.title}</h3>
+          <p class="learn-summary">${l.summary}</p>
+          <p class="learn-date"><i class="far fa-calendar-alt" style="margin-right:5px;opacity:.5"></i>${formatLearnDate(l.date)}</p>
+        </div>
+      </a>`;
+  }).join('');
+  grid.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 }
-
-function closeModalDirect() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModalDirect();
-});
-
-lottie.loadAnimation({
-    container: document.getElementById('astronaut'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: '404 error page with cat.json' 
-  });
-
-  
+renderLearnings();

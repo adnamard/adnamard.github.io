@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coastal Land Change — North Jakarta — Case Study — Dea Ramanda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="cs-header">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../index.html#projects" class="cs-back"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+    <a href="../index.html" class="brand text-lg font-semibold tracking-tight" style="color:var(--navy)">Dea<span style="color:var(--gold)">.</span></a>
+  </div>
+</header>
+
+<section class="relative pt-16 pb-14">
+  <div class="cs-hero-bg"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <p class="hero-kicker mb-5 fade-up">Case Study · Remote Sensing / Geospatial Analytics</p>
+    <h1 class="hero-title mb-5 fade-up" style="font-size:clamp(2rem,4.4vw,3.2rem)">Coastal Land Change — North Jakarta</h1>
+    <p class="hero-question fade-up" style="max-width:52ch">
+      Seven years of satellite imagery, one question: how much of North Jakarta's coastline has actually
+      changed since 2019 — and where is it changing fastest?
+    </p>
+    <div class="flex flex-wrap gap-2 mt-6 fade-up">
+      <span class="tech-tag">Google Earth Engine</span>
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Sentinel-2</span>
+      <span class="tech-tag">Geemap</span>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-8 fade-up">
+      <a href="https://github.com/adnamard" target="_blank" class="btn-primary">
+        <i class="fas fa-external-link-alt text-sm"></i> Live Demo
+      </a>
+      <a href="https://github.com/adnamard" target="_blank" class="btn-outline">
+        <i class="fab fa-github"></i> GitHub Repository
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6">
+
+  <div class="max-w-2xl mb-16 fade-up">
+    <p class="section-label mb-2">The challenge</p>
+    <h2 class="section-title serif mb-5">Business context</h2>
+    <p class="section-lede">
+      Coastal authorities and urban planners need consistent, multi-year visibility into land reclamation and
+      coastal development to manage flood risk and evaluate permit compliance — but manual site surveys can't
+      keep pace with how quickly reclamation actually happens. This project used free, repeat satellite
+      imagery to build that visibility instead.
+    </p>
+  </div>
+
+  <div class="mb-20 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-6" style="color:var(--muted)">Questions I asked</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="question-card fade-up">
+        <span class="emoji">🌊</span>
+        <p>How much land has been reclaimed since 2019?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">📉</span>
+        <p>Where is water disappearing fastest?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🏗️</span>
+        <p>Does bare-soil growth predict where construction follows?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">01 / FEATURE ENGINEERING</p>
+      <h3 class="explore-title serif">Turning raw imagery into a water mask</h3>
+      <p class="explore-text">
+        I computed AWEI_sh (Automated Water Extraction Index) from Sentinel-2 bands to reliably separate water
+        from land across cloud-masked composites, then tracked total water area year over year.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-water" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Water area declined steadily nearly every year since 2019 — not a single dramatic event, but a
+        slow, compounding shift.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-water text-xs"></i></div>
+
+  <div class="explore-block reverse fade-up">
+    <div>
+      <p class="explore-index">02 / EDA JOURNEY</p>
+      <h3 class="explore-title serif">Where is reclamation actually happening?</h3>
+      <p class="explore-text">
+        Using ENDBSI (Enhanced Normalized Difference Bare Soil Index) to flag newly-bare land, I broke down
+        bare-soil growth by coastal zone to find where reclamation was concentrated rather than spread evenly.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-zones" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>One zone accounted for nearly 40% of all new bare-soil area — a clear priority target for
+        monitoring and permit review.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-satellite text-xs"></i></div>
+
+  <div class="mb-10 fade-up" id="dashboard">
+    <p class="section-label mb-2">The conclusion, not the beginning</p>
+    <h2 class="section-title serif mb-4">Bringing it together</h2>
+    <p class="section-lede">
+      A combined view of water loss, bare-soil growth, and land-cover mix gives planners a single reference
+      point instead of stitching together separate satellite passes by hand.
+    </p>
+  </div>
+  <div class="chart-frame mb-20 fade-up">
+    <div id="chart-dashboard" style="width:100%;height:460px"></div>
+  </div>
+
+  <div class="mb-10 fade-up">
+    <p class="section-label mb-2">Key takeaways</p>
+    <h2 class="section-title serif">What the data actually said</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20 fade-up">
+    <div class="takeaway-card fade-up">
+      <span class="emoji">🌊</span>
+      <p>Water area has shrunk steadily since 2019 — a gradual trend, not a single reclamation event.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">📍</span>
+      <p>Reclamation concentrated heavily in one zone, accounting for nearly 40% of all new bare-soil area.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">🏗️</span>
+      <p>Bare-soil expansion tended to precede visible construction by roughly a year — a useful early signal.</p>
+    </div>
+  </div>
+
+  <div class="mb-8 fade-up">
+    <p class="section-label mb-2">So what should change</p>
+    <h2 class="section-title serif">Business recommendations</h2>
+  </div>
+  <div class="mb-20 fade-up">
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">01</p>
+      <p class="text-sm" style="color:var(--navy)">Prioritize the highest-change zone for compliance review, since it accounts for a disproportionate share of new reclaimed land.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">02</p>
+      <p class="text-sm" style="color:var(--navy)">Automate this pipeline to run quarterly in Google Earth Engine rather than as a one-off analysis, so change is caught as it happens.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">03</p>
+      <p class="text-sm" style="color:var(--navy)">Cross-reference bare-soil growth against the permit database — since it tends to precede construction, it can double as an early compliance flag.</p>
+    </div>
+  </div>
+
+  <div class="bento-card max-w-3xl mb-24 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">Reflection</p>
+    <p class="text-sm" style="color:var(--navy-70)">
+      Cloud cover was the most persistent technical obstacle — building a solid cloud-masking step early on
+      saved every analysis downstream from noisy false positives. If I extended this, I'd bring in official
+      permit records to validate whether bare-soil growth really does predict construction, rather than relying
+      on visual inspection alone.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-4 pb-24 fade-up">
+    <a href="https://github.com/adnamard" target="_blank" class="btn-outline">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    <a href="../index.html#projects" class="btn-read-more">
+      <i class="fas fa-arrow-left text-xs"></i> Back to all projects
+    </a>
+  </div>
+</div>
+
+<footer class="py-8 text-center" style="border-top:1px solid var(--border)">
+  <p class="text-sm" style="color:var(--muted)">© 2026 Dea Ramanda · Built with data and a little curiosity</p>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+/* NOTE: sample/illustrative data — swap in the real dataset before publishing. */
+const COLORS = { navy: '#102542', navyMuted: 'rgba(16,37,66,0.55)', navyFaint: 'rgba(16,37,66,0.12)', gold: '#C9A227', goldSoft: '#E4C97A' };
+const FONT = { family: 'Inter, sans-serif', color: COLORS.navy, size: 12 };
+const commonLayout = {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  margin: { l: 44, r: 20, t: 10, b: 40 },
+  xaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+  yaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+};
+const commonConfig = { displayModeBar: false, responsive: true };
+
+const years = ['2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'];
+const waterArea = [412, 401, 388, 374, 360, 349, 338, 329];
+Plotly.newPlot('chart-water', [{
+  x: years, y: waterArea, type: 'scatter', mode: 'lines+markers',
+  line: { color: COLORS.navy, width: 2.5 }, marker: { color: COLORS.navy, size: 6 },
+  fill: 'tozeroy', fillcolor: 'rgba(16,37,66,0.06)',
+  hovertemplate: '%{x}<br>Water area: %{y} ha<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Water area (ha)' } }, commonConfig);
+
+const zones = ['Zone A', 'Zone B', 'Zone C', 'Zone D', 'Zone E'];
+const bareSoil = [38, 22, 17, 14, 9];
+Plotly.newPlot('chart-zones', [{
+  x: zones, y: bareSoil, type: 'bar',
+  marker: { color: bareSoil.map(v => v > 30 ? COLORS.gold : COLORS.navy) },
+  hovertemplate: '%{x}<br>Share of new bare soil: %{y}%<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: '% of new bare-soil area' } }, commonConfig);
+
+Plotly.newPlot('chart-dashboard', [
+  { x: years, y: waterArea, type: 'scatter', mode: 'lines', line: { color: COLORS.navy, width: 2 }, xaxis: 'x', yaxis: 'y', name: 'Water area' },
+  { x: zones, y: bareSoil, type: 'bar', marker: { color: bareSoil.map(v => v > 30 ? COLORS.gold : COLORS.navy) }, xaxis: 'x2', yaxis: 'y2', name: 'Bare soil by zone' },
+  { labels: ['Water', 'Bare soil / reclaimed', 'Vegetation', 'Built-up'], values: [329, 96, 140, 210], type: 'pie', hole: 0.6,
+    marker: { colors: [COLORS.navy, COLORS.gold, COLORS.goldSoft, COLORS.navyFaint.replace('0.12','0.5')] },
+    textinfo: 'label+percent', domain: { row: 1, column: 1 }, name: 'Land cover 2026' },
+], {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  grid: { rows: 2, columns: 2, pattern: 'independent' },
+  margin: { l: 50, r: 20, t: 30, b: 30 }, showlegend: false,
+}, commonConfig);
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reusable vs. Disposable Container Classifier — Case Study — Dea Ramanda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="cs-header">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../index.html#projects" class="cs-back"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+    <a href="../index.html" class="brand text-lg font-semibold tracking-tight" style="color:var(--navy)">Dea<span style="color:var(--gold)">.</span></a>
+  </div>
+</header>
+
+<section class="relative pt-16 pb-14">
+  <div class="cs-hero-bg"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <p class="hero-kicker mb-5 fade-up">Case Study · Computer Vision / Transfer Learning</p>
+    <h1 class="hero-title mb-5 fade-up" style="font-size:clamp(2rem,4.4vw,3.2rem)">Reusable vs. Disposable Container Classifier</h1>
+    <p class="hero-question fade-up" style="max-width:52ch">
+      A thesis project asking whether a lightweight model can reliably tell a reusable tumbler apart from a
+      disposable cup — accurately enough to support a real sustainability program.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-6 fade-up">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">TensorFlow/Keras</span>
+      <span class="tech-tag">MobileNetV2</span>
+      <span class="tech-tag">HuggingFace</span>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-8 fade-up">
+      <a href="https://huggingface.co/spaces/Adnamar/Tumbler-detection" target="_blank" class="btn-primary">
+        <i class="fas fa-external-link-alt text-sm"></i> Live Demo
+      </a>
+      <a href="https://github.com/adnamard/Tumblr-Detection" target="_blank" class="btn-outline">
+        <i class="fab fa-github"></i> GitHub Repository
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6">
+
+  <div class="max-w-2xl mb-16 fade-up">
+    <p class="section-label mb-2">The challenge</p>
+    <h2 class="section-title serif mb-5">Business context</h2>
+    <p class="section-lede">
+      Sustainability initiatives that reward reusable-container use — smart bins, campus programs, café loyalty
+      schemes — had no automated way to verify what people were actually using. Manual checks don't scale, so
+      the program needed a model accurate and light enough to run in real time on modest hardware.
+    </p>
+  </div>
+
+  <div class="mb-20 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-6" style="color:var(--muted)">Questions I asked</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="question-card fade-up">
+        <span class="emoji">🤖</span>
+        <p>Can a lightweight model classify reliably in real time?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🖼️</span>
+        <p>How much augmentation does a small dataset need?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🔍</span>
+        <p>Does it hold up on messy, real-world photos?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">01 / DATA JOURNEY</p>
+      <h3 class="explore-title serif">Starting from a small, imbalanced dataset</h3>
+      <p class="explore-text">
+        The raw image set skewed heavily toward disposable cups, since they're simply more common to photograph.
+        I checked class balance first, since an imbalanced training set quietly biases everything downstream.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-class-balance" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Disposable images outnumbered reusable ones nearly 2:1 — enough to bias the model toward
+        predicting "disposable" by default without correction.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-camera-retro text-xs"></i></div>
+
+  <div class="explore-block reverse fade-up">
+    <div>
+      <p class="explore-index">02 / FEATURE ENGINEERING &amp; MODELING</p>
+      <h3 class="explore-title serif">Transfer learning with MobileNetV2</h3>
+      <p class="explore-text">
+        Rather than training from scratch on a small dataset, I froze the MobileNetV2 base pretrained on
+        ImageNet and fine-tuned only the final layers, paired with augmentation (rotation, brightness jitter,
+        flips) to correct the class imbalance and improve generalization.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-training" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Validation accuracy tracked training accuracy closely after augmentation — a good sign the model
+        wasn't just memorizing the training set.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-check-circle text-xs"></i></div>
+
+  <div class="mb-10 fade-up" id="dashboard">
+    <p class="section-label mb-2">Where the model still struggles</p>
+    <h2 class="section-title serif mb-4">Confusion matrix on the test set</h2>
+    <p class="section-lede">
+      At 96% overall accuracy, most errors clustered in one direction — worth knowing before deploying this
+      into a program that rewards people for correct classification.
+    </p>
+  </div>
+  <div class="chart-frame mb-20 fade-up">
+    <div id="chart-confusion" style="width:100%;height:340px"></div>
+  </div>
+
+  <div class="mb-10 fade-up">
+    <p class="section-label mb-2">Key takeaways</p>
+    <h2 class="section-title serif">What the data actually said</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20 fade-up">
+    <div class="takeaway-card fade-up">
+      <span class="emoji">🎯</span>
+      <p>96% accuracy on the held-out test set, achieved without training a network from scratch.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">💡</span>
+      <p>Transparent or clear-colored containers were the most common misclassification, mostly confused for glassware.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">☁️</span>
+      <p>Deploying to Hugging Face Spaces made the model testable by anyone without a local setup.</p>
+    </div>
+  </div>
+
+  <div class="mb-8 fade-up">
+    <p class="section-label mb-2">So what should change</p>
+    <h2 class="section-title serif">Business recommendations</h2>
+  </div>
+  <div class="mb-20 fade-up">
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">01</p>
+      <p class="text-sm" style="color:var(--navy)">Expand the training set with more transparent and colored containers before rolling this out to a reward program — that's where errors concentrate.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">02</p>
+      <p class="text-sm" style="color:var(--navy)">Add a confidence threshold with human review for borderline predictions, rather than auto-approving every classification.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">03</p>
+      <p class="text-sm" style="color:var(--navy)">If moving toward on-device deployment (smart bins), quantize the model to keep inference fast on low-power hardware.</p>
+    </div>
+  </div>
+
+  <div class="bento-card max-w-3xl mb-24 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">Reflection</p>
+    <p class="text-sm" style="color:var(--navy-70)">
+      This was my first real experience with transfer learning, and the biggest lesson was how much augmentation
+      strategy matters when data is scarce — it moved the needle more than any architecture change. Next time
+      I'd collect more edge-case photos (transparent containers, poor lighting) up front instead of patching
+      them in after the first accuracy plateau.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-4 pb-24 fade-up">
+    <a href="https://github.com/adnamard/Tumblr-Detection" target="_blank" class="btn-outline">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    <a href="../index.html#projects" class="btn-read-more">
+      <i class="fas fa-arrow-left text-xs"></i> Back to all projects
+    </a>
+  </div>
+</div>
+
+<footer class="py-8 text-center" style="border-top:1px solid var(--border)">
+  <p class="text-sm" style="color:var(--muted)">© 2026 Dea Ramanda · Built with data and a little curiosity</p>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+/* NOTE: sample/illustrative data — swap in the real dataset before publishing. */
+const COLORS = { navy: '#102542', navyMuted: 'rgba(16,37,66,0.55)', navyFaint: 'rgba(16,37,66,0.12)', gold: '#C9A227', goldSoft: '#E4C97A' };
+const FONT = { family: 'Inter, sans-serif', color: COLORS.navy, size: 12 };
+const commonLayout = {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  margin: { l: 44, r: 20, t: 10, b: 40 },
+  xaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+  yaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+};
+const commonConfig = { displayModeBar: false, responsive: true };
+
+Plotly.newPlot('chart-class-balance', [{
+  x: ['Reusable tumbler', 'Disposable cup'], y: [640, 1180], type: 'bar',
+  marker: { color: [COLORS.gold, COLORS.navy] },
+  hovertemplate: '%{x}<br>Images: %{y}<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Image count' } }, commonConfig);
+
+const epochs = Array.from({length: 20}, (_, i) => i + 1);
+const trainAcc = epochs.map(e => Math.min(0.98, 0.62 + Math.log(e+1)*0.11));
+const valAcc   = epochs.map(e => Math.min(0.96, 0.58 + Math.log(e+1)*0.105));
+Plotly.newPlot('chart-training', [
+  { x: epochs, y: trainAcc, type: 'scatter', mode: 'lines', line: { color: COLORS.navy, width: 2.5 }, name: 'Train accuracy' },
+  { x: epochs, y: valAcc, type: 'scatter', mode: 'lines', line: { color: COLORS.gold, width: 2.5, dash: 'dot' }, name: 'Validation accuracy' },
+], { ...commonLayout, xaxis: { ...commonLayout.xaxis, title: 'Epoch' }, yaxis: { ...commonLayout.yaxis, title: 'Accuracy', range: [0.5, 1] }, showlegend: true, legend: { orientation: 'h', y: -0.25 } }, commonConfig);
+
+Plotly.newPlot('chart-confusion', [{
+  z: [[188, 12], [8, 192]],
+  x: ['Predicted: Reusable', 'Predicted: Disposable'],
+  y: ['Actual: Reusable', 'Actual: Disposable'],
+  type: 'heatmap', colorscale: [[0, '#FCFAF7'], [1, COLORS.navy]], showscale: false,
+  texttemplate: '%{z}', textfont: { color: COLORS.gold, size: 14 },
+}], { ...commonLayout, xaxis: { ...commonLayout.xaxis, side: 'top' }, margin: { l: 130, r: 20, t: 40, b: 20 } }, commonConfig);
+</script>
+</body>
+</html>

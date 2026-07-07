@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabir — Real-Time Sign Language Detection — Case Study — Dea Ramanda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="cs-header">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../index.html#projects" class="cs-back"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+    <a href="../index.html" class="brand text-lg font-semibold tracking-tight" style="color:var(--navy)">Dea<span style="color:var(--gold)">.</span></a>
+  </div>
+</header>
+
+<section class="relative pt-16 pb-14">
+  <div class="cs-hero-bg"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <p class="hero-kicker mb-5 fade-up">Case Study · Computer Vision / Deep Learning</p>
+    <h1 class="hero-title mb-5 fade-up" style="font-size:clamp(2rem,4.4vw,3.2rem)">Tabir — Real-Time Sign Language Detection</h1>
+    <p class="hero-question fade-up" style="max-width:52ch">
+      Building a real-time SIBI (Indonesian Sign Language) recognition system from scratch — including the
+      video dataset it had to learn from.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-6 fade-up">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Keras</span>
+      <span class="tech-tag">TensorFlow</span>
+      <span class="tech-tag">MediaPipe</span>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-8 fade-up">
+      <a href="https://melodic-fudge-91078b.netlify.app/" target="_blank" class="btn-primary">
+        <i class="fas fa-external-link-alt text-sm"></i> Live Demo
+      </a>
+      <a href="https://github.com/adnamard/tabir-official" target="_blank" class="btn-outline">
+        <i class="fab fa-github"></i> GitHub Repository
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6">
+
+  <div class="max-w-2xl mb-16 fade-up">
+    <p class="section-label mb-2">The challenge</p>
+    <h2 class="section-title serif mb-5">Business context</h2>
+    <p class="section-lede">
+      Deaf and hard-of-hearing individuals in Indonesia often face real friction in everyday interactions —
+      not everyone knows SIBI, and interpreters aren't always available. No public dataset of SIBI gestures
+      existed at the scale needed for a real-time classifier, so the project had to build one before it could
+      train one.
+    </p>
+  </div>
+
+  <div class="mb-20 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-6" style="color:var(--muted)">Questions I asked</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="question-card fade-up">
+        <span class="emoji">⚡</span>
+        <p>Can detection run in real time on consumer hardware?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🎥</span>
+        <p>How much custom video data does full coverage need?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🤚</span>
+        <p>Where does the model confuse similar handshapes?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">01 / DATA JOURNEY</p>
+      <h3 class="explore-title serif">Building the dataset from scratch</h3>
+      <p class="explore-text">
+        I recorded and labeled custom video clips across common SIBI signs, then checked class coverage —
+        static letter signs were easy to collect in volume, but motion-based word signs needed far more takes
+        to capture enough variation.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-dataset" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Motion-based signs had roughly half the sample count of static signs — a gap that shows up later
+        as lower accuracy on exactly those classes.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-hand-paper text-xs"></i></div>
+
+  <div class="explore-block reverse fade-up">
+    <div>
+      <p class="explore-index">02 / FEATURE ENGINEERING &amp; MODELING</p>
+      <h3 class="explore-title serif">From video to landmarks to gesture</h3>
+      <p class="explore-text">
+        Rather than feeding raw video frames to the model, I used MediaPipe to extract hand landmark
+        coordinates per frame, then trained a Keras classifier on those landmark sequences — a much smaller,
+        faster-to-train feature space than raw pixels.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-training" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Landmark-based features converged faster than a pixel-based approach would have — a good trade
+        for a project needing real-time inference on modest hardware.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-project-diagram text-xs"></i></div>
+
+  <div class="mb-10 fade-up" id="dashboard">
+    <p class="section-label mb-2">Where the model still struggles</p>
+    <h2 class="section-title serif mb-4">Per-class accuracy</h2>
+    <p class="section-lede">
+      Real-time detection worked well overall, but accuracy wasn't even across every sign — worth knowing
+      before positioning this as production-ready.
+    </p>
+  </div>
+  <div class="chart-frame mb-20 fade-up">
+    <div id="chart-perclass" style="width:100%;height:320px"></div>
+  </div>
+
+  <div class="mb-10 fade-up">
+    <p class="section-label mb-2">Key takeaways</p>
+    <h2 class="section-title serif">What the data actually said</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20 fade-up">
+    <div class="takeaway-card fade-up">
+      <span class="emoji">⚡</span>
+      <p>Real-time detection ran smoothly using MediaPipe's lightweight landmark extraction as the input feature.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">🤚</span>
+      <p>Static signs with distinct handshapes were the most reliable; visually similar handshapes were the top source of errors.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">🎥</span>
+      <p>Motion-based signs need noticeably more training data than static ones to reach the same accuracy.</p>
+    </div>
+  </div>
+
+  <div class="mb-8 fade-up">
+    <p class="section-label mb-2">So what should change</p>
+    <h2 class="section-title serif">Recommendations</h2>
+  </div>
+  <div class="mb-20 fade-up">
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">01</p>
+      <p class="text-sm" style="color:var(--navy)">Prioritize collecting more motion-based sign clips before expanding vocabulary further — that's where accuracy currently lags.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">02</p>
+      <p class="text-sm" style="color:var(--navy)">Add a temporal sequence model (e.g. an LSTM over landmark frames) to better capture motion-based signs rather than treating each frame independently.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">03</p>
+      <p class="text-sm" style="color:var(--navy)">Validate the dataset and model outputs with SIBI-fluent community members before wider release, to catch regional or informal sign variations.</p>
+    </div>
+  </div>
+
+  <div class="bento-card max-w-3xl mb-24 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">Reflection</p>
+    <p class="text-sm" style="color:var(--navy-70)">
+      Collecting the dataset took far longer than training the model — a reminder that for underrepresented
+      languages, data collection is usually the real project. If I revisited this, I'd design the recording
+      protocol with community input from day one, rather than after the first model felt "good enough."
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-4 pb-24 fade-up">
+    <a href="https://github.com/adnamard/tabir-official" target="_blank" class="btn-outline">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    <a href="../index.html#projects" class="btn-read-more">
+      <i class="fas fa-arrow-left text-xs"></i> Back to all projects
+    </a>
+  </div>
+</div>
+
+<footer class="py-8 text-center" style="border-top:1px solid var(--border)">
+  <p class="text-sm" style="color:var(--muted)">© 2026 Dea Ramanda · Built with data and a little curiosity</p>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+/* NOTE: sample/illustrative data — swap in the real dataset before publishing. */
+const COLORS = { navy: '#102542', navyMuted: 'rgba(16,37,66,0.55)', navyFaint: 'rgba(16,37,66,0.12)', gold: '#C9A227', goldSoft: '#E4C97A' };
+const FONT = { family: 'Inter, sans-serif', color: COLORS.navy, size: 12 };
+const commonLayout = {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  margin: { l: 44, r: 20, t: 10, b: 40 },
+  xaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+  yaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+};
+const commonConfig = { displayModeBar: false, responsive: true };
+
+Plotly.newPlot('chart-dataset', [{
+  x: ['Static letter signs', 'Motion-based word signs'], y: [2400, 1150], type: 'bar',
+  marker: { color: [COLORS.navy, COLORS.gold] },
+  hovertemplate: '%{x}<br>Clips: %{y}<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Labeled clips' } }, commonConfig);
+
+const epochs = Array.from({length: 20}, (_, i) => i + 1);
+const trainAcc = epochs.map(e => Math.min(0.97, 0.55 + Math.log(e+1)*0.13));
+const valAcc   = epochs.map(e => Math.min(0.93, 0.5 + Math.log(e+1)*0.125));
+Plotly.newPlot('chart-training', [
+  { x: epochs, y: trainAcc, type: 'scatter', mode: 'lines', line: { color: COLORS.navy, width: 2.5 }, name: 'Train accuracy' },
+  { x: epochs, y: valAcc, type: 'scatter', mode: 'lines', line: { color: COLORS.gold, width: 2.5, dash: 'dot' }, name: 'Validation accuracy' },
+], { ...commonLayout, xaxis: { ...commonLayout.xaxis, title: 'Epoch' }, yaxis: { ...commonLayout.yaxis, title: 'Accuracy', range: [0.4, 1] }, showlegend: true, legend: { orientation: 'h', y: -0.25 } }, commonConfig);
+
+const signs = ['A', 'B', 'C', 'Halo', 'Terima kasih', 'Tolong'];
+const acc = [0.97, 0.95, 0.88, 0.79, 0.74, 0.81];
+Plotly.newPlot('chart-perclass', [{
+  x: signs, y: acc, type: 'bar',
+  marker: { color: acc.map(v => v < 0.85 ? COLORS.gold : COLORS.navy) },
+  hovertemplate: '%{x}<br>Accuracy: %{y:.0%}<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Accuracy', range: [0, 1], tickformat: '.0%' } }, commonConfig);
+</script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memorabilia — Book Recommendation System — Case Study — Dea Ramanda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="cs-header">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../index.html#projects" class="cs-back"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+    <a href="../index.html" class="brand text-lg font-semibold tracking-tight" style="color:var(--navy)">Dea<span style="color:var(--gold)">.</span></a>
+  </div>
+</header>
+
+<section class="relative pt-16 pb-14">
+  <div class="cs-hero-bg"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <p class="hero-kicker mb-5 fade-up">Case Study · Machine Learning / Recommender System</p>
+    <h1 class="hero-title mb-5 fade-up" style="font-size:clamp(2rem,4.4vw,3.2rem)">Memorabilia — Book Recommendation System</h1>
+    <p class="hero-question fade-up" style="max-width:52ch">
+      A personalized recommendation engine for a reading app, built to answer a simple question: will actually
+      relevant picks get people reading more than a generic bestseller list?
+    </p>
+    <div class="flex flex-wrap gap-2 mt-6 fade-up">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">TensorFlow/Keras</span>
+      <span class="tech-tag">Pandas</span>
+      <span class="tech-tag">Flask</span>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-8 fade-up">
+      <a href="https://www.canva.com/design/DAGH7-DqJGQ/JgxpttpFMlXDblRSSH94Ew/view" target="_blank" class="btn-primary">
+        <i class="fas fa-external-link-alt text-sm"></i> Live Demo
+      </a>
+      <a href="https://github.com/Memorabillia/Memorabillia" target="_blank" class="btn-outline">
+        <i class="fab fa-github"></i> GitHub Repository
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6">
+
+  <div class="max-w-2xl mb-16 fade-up">
+    <p class="section-label mb-2">The challenge</p>
+    <h2 class="section-title serif mb-5">Business context</h2>
+    <p class="section-lede">
+      Memorabilia's reading app had engagement problems familiar to any content platform: readers opened the
+      app, saw a generic bestseller list, and often didn't come back. The team wanted personalized
+      recommendations that could lift both reading engagement and, longer term, literacy — but with real
+      interaction data that was sparse for most users.
+    </p>
+  </div>
+
+  <div class="mb-20 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-6" style="color:var(--muted)">Questions I asked</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="question-card fade-up">
+        <span class="emoji">📖</span>
+        <p>Do personalized picks outperform a bestseller list?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🕳️</span>
+        <p>How sparse is the interaction data, really?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">🎭</span>
+        <p>Which genres are hardest to recommend confidently?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">01 / EDA JOURNEY</p>
+      <h3 class="explore-title serif">Just how sparse is the ratings matrix?</h3>
+      <p class="explore-text">
+        Before picking a modeling approach, I checked how many books the typical user had actually rated —
+        this determines whether collaborative filtering has enough signal to work at all.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-sparsity" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Most users had rated fewer than 5 books — the classic cold-start problem collaborative filtering
+        needs to be designed around, not ignored.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-book-open text-xs"></i></div>
+
+  <div class="explore-block reverse fade-up">
+    <div>
+      <p class="explore-index">02 / FEATURE ENGINEERING &amp; MODELING</p>
+      <h3 class="explore-title serif">Neural Collaborative Filtering</h3>
+      <p class="explore-text">
+        I modeled user and book IDs as learned embeddings, feeding their interaction into a small neural network
+        (Neural Collaborative Filtering) rather than a traditional matrix factorization — better able to
+        capture non-linear preference patterns as the embedding size grew.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-loss" style="width:100%;height:300px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Validation loss plateaued around epoch 12 — training past that point mostly overfit to the
+        power users with lots of ratings.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-star text-xs"></i></div>
+
+  <div class="mb-10 fade-up" id="dashboard">
+    <p class="section-label mb-2">Did it actually work?</p>
+    <h2 class="section-title serif mb-4">Engagement vs. the bestseller baseline</h2>
+    <p class="section-lede">
+      The real test wasn't offline accuracy — it was whether people opened what the model recommended more
+      than they opened the generic list it replaced.
+    </p>
+  </div>
+  <div class="chart-frame mb-20 fade-up">
+    <div id="chart-ctr" style="width:100%;height:300px"></div>
+  </div>
+
+  <div class="mb-10 fade-up">
+    <p class="section-label mb-2">Key takeaways</p>
+    <h2 class="section-title serif">What the data actually said</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20 fade-up">
+    <div class="takeaway-card fade-up">
+      <span class="emoji">📚</span>
+      <p>NCF-personalized recommendations meaningfully outperformed the generic bestseller list on click-through.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">🕳️</span>
+      <p>New users with little history remained the hardest to serve well — the model needs a fallback for them.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">⚙️</span>
+      <p>Deploying behind a Flask API on GCP kept inference fast enough for in-app use without a heavy backend.</p>
+    </div>
+  </div>
+
+  <div class="mb-8 fade-up">
+    <p class="section-label mb-2">So what should change</p>
+    <h2 class="section-title serif">Business recommendations</h2>
+  </div>
+  <div class="mb-20 fade-up">
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">01</p>
+      <p class="text-sm" style="color:var(--navy)">Add a content-based fallback (genre, author, tags) for new users until they've rated enough books for collaborative filtering to kick in.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">02</p>
+      <p class="text-sm" style="color:var(--navy)">Instrument click-through and completion tracking in the app so the model can be retrained on real engagement signal, not just star ratings.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">03</p>
+      <p class="text-sm" style="color:var(--navy)">Expand book metadata (author, tags, reading level) to give the model more signal for genres where confidence was lowest.</p>
+    </div>
+  </div>
+
+  <div class="bento-card max-w-3xl mb-24 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">Reflection</p>
+    <p class="text-sm" style="color:var(--navy-70)">
+      The sparsity check early on saved me from over-investing in a pure collaborative-filtering approach — I
+      designed the fallback path from the start instead of bolting it on later. If I revisited this, I'd
+      prioritize instrumenting engagement tracking before the model launch, not after, so the retraining loop
+      could start immediately.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-4 pb-24 fade-up">
+    <a href="https://github.com/Memorabillia/Memorabillia" target="_blank" class="btn-outline">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    <a href="../index.html#projects" class="btn-read-more">
+      <i class="fas fa-arrow-left text-xs"></i> Back to all projects
+    </a>
+  </div>
+</div>
+
+<footer class="py-8 text-center" style="border-top:1px solid var(--border)">
+  <p class="text-sm" style="color:var(--muted)">© 2026 Dea Ramanda · Built with data and a little curiosity</p>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+/* NOTE: sample/illustrative data — swap in the real dataset before publishing. */
+const COLORS = { navy: '#102542', navyMuted: 'rgba(16,37,66,0.55)', navyFaint: 'rgba(16,37,66,0.12)', gold: '#C9A227', goldSoft: '#E4C97A' };
+const FONT = { family: 'Inter, sans-serif', color: COLORS.navy, size: 12 };
+const commonLayout = {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  margin: { l: 44, r: 20, t: 10, b: 40 },
+  xaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+  yaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+};
+const commonConfig = { displayModeBar: false, responsive: true };
+
+Plotly.newPlot('chart-sparsity', [{
+  x: ['1–2 books', '3–5 books', '6–10 books', '11–20 books', '20+ books'],
+  y: [1420, 860, 340, 140, 60], type: 'bar',
+  marker: { color: [COLORS.gold, COLORS.gold, COLORS.navy, COLORS.navy, COLORS.navy] },
+  hovertemplate: '%{x} rated<br>Users: %{y}<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Number of users' } }, commonConfig);
+
+const epochs = Array.from({length: 20}, (_, i) => i + 1);
+const trainLoss = epochs.map(e => Math.max(0.18, 1.1 * Math.exp(-e/6)));
+const valLoss   = epochs.map(e => e < 12 ? Math.max(0.22, 1.15 * Math.exp(-e/6.2)) : Math.max(0.22, 1.15 * Math.exp(-12/6.2)) + (e-12)*0.006);
+Plotly.newPlot('chart-loss', [
+  { x: epochs, y: trainLoss, type: 'scatter', mode: 'lines', line: { color: COLORS.navy, width: 2.5 }, name: 'Train loss' },
+  { x: epochs, y: valLoss, type: 'scatter', mode: 'lines', line: { color: COLORS.gold, width: 2.5, dash: 'dot' }, name: 'Validation loss' },
+], { ...commonLayout, xaxis: { ...commonLayout.xaxis, title: 'Epoch' }, yaxis: { ...commonLayout.yaxis, title: 'Loss' }, showlegend: true, legend: { orientation: 'h', y: -0.25 } }, commonConfig);
+
+Plotly.newPlot('chart-ctr', [{
+  x: ['Bestseller list (baseline)', 'NCF personalized recommendations'],
+  y: [8.4, 15.9], type: 'bar',
+  marker: { color: [COLORS.navyFaint.replace('0.12','0.4'), COLORS.gold] },
+  hovertemplate: '%{x}<br>Click-through: %{y}%<extra></extra>',
+}], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Click-through rate (%)' } }, commonConfig);
+</script>
+</body>
+</html>

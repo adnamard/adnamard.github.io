@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Sales Performance Dashboard — Case Study — Dea Ramanda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="cs-header">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../index.html#projects" class="cs-back"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+    <a href="../index.html" class="brand text-lg font-semibold tracking-tight" style="color:var(--navy)">Dea<span style="color:var(--gold)">.</span></a>
+  </div>
+</header>
+
+<section class="relative pt-16 pb-14">
+  <div class="cs-hero-bg"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <p class="hero-kicker mb-5 fade-up">Case Study · Business Intelligence / Data Visualization</p>
+    <h1 class="hero-title mb-5 fade-up" style="font-size:clamp(2rem,4.4vw,3.2rem)">Market Sales Performance Dashboard</h1>
+    <p class="hero-question fade-up" style="max-width:52ch">
+      Turning a pile of raw transaction logs into a dashboard leadership actually opens every week — one built
+      to answer "who's driving growth?" in seconds, not spreadsheets.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-6 fade-up">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Plotly</span>
+      <span class="tech-tag">Streamlit</span>
+      <span class="tech-tag">Pandas</span>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-8 fade-up">
+      <a href="https://sales-market-dashboard-adnamar.streamlit.app/" target="_blank" class="btn-primary">
+        <i class="fas fa-external-link-alt text-sm"></i> Live Demo
+      </a>
+      <a href="https://github.com/adnamard/Sales-Market-Dashboard" target="_blank" class="btn-outline">
+        <i class="fab fa-github"></i> GitHub Repository
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6">
+
+  <div class="max-w-2xl mb-16 fade-up">
+    <p class="section-label mb-2">The challenge</p>
+    <h2 class="section-title serif mb-5">Business context</h2>
+    <p class="section-lede">
+      The client had years of point-of-sale transaction history but no reliable way to see which products,
+      categories, or customers actually drove revenue. Decisions on promotions, stock, and account management
+      were largely reactive — made from gut feel rather than the data already sitting in their systems.
+    </p>
+  </div>
+
+  <div class="mb-20 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-6" style="color:var(--muted)">Questions I asked</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="question-card fade-up">
+        <span class="emoji">👥</span>
+        <p>Who are our best customers, really?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">📦</span>
+        <p>Which categories drive most of the revenue?</p>
+      </div>
+      <div class="question-card fade-up">
+        <span class="emoji">📈</span>
+        <p>Is revenue trending up or quietly slipping?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Explore 1 -->
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">01 / EDA JOURNEY</p>
+      <h3 class="explore-title serif">Reading the daily revenue trend</h3>
+      <p class="explore-text">
+        I started with the most basic question: is the business actually growing? I plotted daily revenue
+        against a 7-day moving average to separate real trend from day-to-day noise.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-revenue-trend" style="width:100%;height:320px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Revenue was trending up overall, but weekend spikes were masking a slower weekday baseline —
+        the smoothed line told a very different story than the raw daily numbers.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-chart-line text-xs"></i></div>
+
+  <!-- Explore 2 -->
+  <div class="explore-block reverse fade-up">
+    <div>
+      <p class="explore-index">02 / EDA JOURNEY</p>
+      <h3 class="explore-title serif">Which categories carry the business?</h3>
+      <p class="explore-text">
+        Next, I broke revenue down by product category to see whether growth was broad-based or concentrated
+        in a handful of hero products.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-category" style="width:100%;height:320px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>Two categories accounted for nearly half of all revenue — a strong signal for where to focus
+        merchandising and promotions.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-users text-xs"></i></div>
+
+  <!-- Feature engineering -->
+  <div class="explore-block fade-up">
+    <div>
+      <p class="explore-index">03 / FEATURE ENGINEERING</p>
+      <h3 class="explore-title serif">Segmenting customers with RFM</h3>
+      <p class="explore-text">
+        To answer "who are our best customers," I engineered Recency, Frequency, and Monetary (RFM) features
+        from raw order history, then plotted spend against order frequency to separate big spenders from
+        loyal repeat buyers — they're not always the same people.
+      </p>
+    </div>
+    <div>
+      <div class="chart-frame">
+        <div id="chart-segments" style="width:100%;height:320px"></div>
+      </div>
+      <div class="callout">
+        <span class="icon">💡</span>
+        <span>The single biggest spender ordered rarely, while the most loyal customer ordered often at a much
+        lower ticket size — two very different retention strategies were needed.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-divider"><i class="fas fa-chart-pie text-xs"></i></div>
+
+  <!-- Dashboard -->
+  <div class="mb-10 fade-up" id="dashboard">
+    <p class="section-label mb-2">The conclusion, not the beginning</p>
+    <h2 class="section-title serif mb-4">Bringing it together</h2>
+    <p class="section-lede">
+      Every hypothesis above now lives in one interactive Streamlit dashboard, so a category manager or exec
+      can filter by date range, category, or customer segment without touching a spreadsheet.
+    </p>
+  </div>
+  <div class="chart-frame mb-20 fade-up">
+    <div id="chart-dashboard" style="width:100%;height:480px"></div>
+  </div>
+
+  <div class="mb-10 fade-up">
+    <p class="section-label mb-2">Key takeaways</p>
+    <h2 class="section-title serif">What the data actually said</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20 fade-up">
+    <div class="takeaway-card fade-up">
+      <span class="emoji">📈</span>
+      <p>Weekday revenue was flatter than the headline trend suggested — weekends were doing the heavy lifting.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">📦</span>
+      <p>Two categories drove nearly half of total revenue — concentration risk leadership hadn't quantified before.</p>
+    </div>
+    <div class="takeaway-card fade-up">
+      <span class="emoji">👥</span>
+      <p>"Biggest spender" and "most loyal customer" were different people, needing different retention plays.</p>
+    </div>
+  </div>
+
+  <div class="mb-8 fade-up">
+    <p class="section-label mb-2">So what should change</p>
+    <h2 class="section-title serif">Business recommendations</h2>
+  </div>
+  <div class="mb-20 fade-up">
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">01</p>
+      <p class="text-sm" style="color:var(--navy)">Run separate campaigns for high-value/low-frequency spenders versus frequent/lower-ticket loyalists — a single blanket promotion under-serves both.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">02</p>
+      <p class="text-sm" style="color:var(--navy)">Bundle slower-moving categories with the two hero categories to lift their visibility without discounting the products already selling well.</p>
+    </div>
+    <div class="reco-card fade-up">
+      <p class="reco-num mb-1">03</p>
+      <p class="text-sm" style="color:var(--navy)">Set an automated alert for weekday revenue drops greater than 15%, since the moving average showed that's where early warning signs actually surface.</p>
+    </div>
+  </div>
+
+  <div class="bento-card max-w-3xl mb-24 fade-up">
+    <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--muted)">Reflection</p>
+    <p class="text-sm" style="color:var(--navy-70)">
+      The RFM segmentation was the most valuable part of this project — it's a simple technique, but it exposed
+      a blind spot leadership genuinely didn't have visibility into. If I extended this, I'd add a churn-risk
+      score on top of the segments so the dashboard flags at-risk loyal customers before they actually leave.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-4 pb-24 fade-up">
+    <a href="https://github.com/adnamard/Sales-Market-Dashboard" target="_blank" class="btn-outline">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    <a href="../index.html#projects" class="btn-read-more">
+      <i class="fas fa-arrow-left text-xs"></i> Back to all projects
+    </a>
+  </div>
+</div>
+
+<footer class="py-8 text-center" style="border-top:1px solid var(--border)">
+  <p class="text-sm" style="color:var(--muted)">© 2026 Dea Ramanda · Built with data and a little curiosity</p>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+/* NOTE: sample/illustrative data — swap in the real dataset before publishing. */
+const COLORS = { navy: '#102542', navyMuted: 'rgba(16,37,66,0.55)', navyFaint: 'rgba(16,37,66,0.12)', gold: '#C9A227', goldSoft: '#E4C97A' };
+const FONT = { family: 'Inter, sans-serif', color: COLORS.navy, size: 12 };
+const commonLayout = {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  margin: { l: 44, r: 20, t: 10, b: 40 },
+  xaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+  yaxis: { gridcolor: COLORS.navyFaint, zeroline: false },
+};
+const commonConfig = { displayModeBar: false, responsive: true };
+
+const days = []; const daily = []; const ma = [];
+const start = new Date('2026-01-01');
+for (let i = 0; i < 90; i++) {
+  const d = new Date(start); d.setDate(d.getDate() + i);
+  days.push(d.toISOString().slice(0, 10));
+  const weekday = d.getDay();
+  const boost = (weekday === 0 || weekday === 6) ? 1.5 : 1;
+  daily.push(Math.round((2000 + i * 6 + Math.sin(i/4)*300) * boost));
+}
+for (let i = 0; i < daily.length; i++) {
+  const slice = daily.slice(Math.max(0, i-6), i+1);
+  ma.push(Math.round(slice.reduce((a,b)=>a+b,0) / slice.length));
+}
+Plotly.newPlot('chart-revenue-trend', [
+  { x: days, y: daily, type: 'bar', marker: { color: COLORS.navyFaint }, name: 'Daily revenue' },
+  { x: days, y: ma, type: 'scatter', mode: 'lines', line: { color: COLORS.gold, width: 2.5 }, name: '7-day avg' },
+], { ...commonLayout, yaxis: { ...commonLayout.yaxis, title: 'Revenue ($)' }, showlegend: false }, commonConfig);
+
+const categories = ['Home & Living', 'Electronics', 'Apparel', 'Groceries', 'Beauty', 'Sports'];
+const catRevenue  = [142000, 118000, 74000, 61000, 44000, 31000];
+Plotly.newPlot('chart-category', [{
+  x: catRevenue, y: categories, type: 'bar', orientation: 'h',
+  marker: { color: catRevenue.map((v,i) => i < 2 ? COLORS.gold : COLORS.navy) },
+  hovertemplate: '%{y}<br>Revenue: $%{x:,}<extra></extra>',
+}], { ...commonLayout, xaxis: { ...commonLayout.xaxis, title: 'Revenue ($)' }, margin: { l: 110, r: 20, t: 10, b: 40 } }, commonConfig);
+
+const freq = [2, 14, 5, 9, 3, 18, 7, 11, 4, 20, 6, 16];
+const spend = [8200, 3100, 6400, 4200, 7100, 2200, 5100, 3600, 6900, 1900, 5400, 2800];
+Plotly.newPlot('chart-segments', [{
+  x: freq, y: spend, mode: 'markers', type: 'scatter',
+  marker: { size: 12, color: COLORS.navy, opacity: 0.75 },
+  hovertemplate: 'Orders: %{x}<br>Total spend: $%{y}<extra></extra>',
+}], { ...commonLayout, xaxis: { ...commonLayout.xaxis, title: 'Order frequency' }, yaxis: { ...commonLayout.yaxis, title: 'Total spend ($)' } }, commonConfig);
+
+Plotly.newPlot('chart-dashboard', [
+  { x: days, y: ma, type: 'scatter', mode: 'lines', line: { color: COLORS.gold, width: 2 }, xaxis: 'x', yaxis: 'y', name: 'Revenue trend' },
+  { x: catRevenue, y: categories, type: 'bar', orientation: 'h', marker: { color: catRevenue.map((v,i) => i < 2 ? COLORS.gold : COLORS.navy) }, xaxis: 'x2', yaxis: 'y2', name: 'Category revenue' },
+  { x: freq, y: spend, mode: 'markers', type: 'scatter', marker: { size: 9, color: COLORS.navy }, xaxis: 'x3', yaxis: 'y3', name: 'Customer segments' },
+  { labels: ['Home & Living','Electronics','Other'], values: [142000,118000,210000], type: 'pie', hole: 0.6, marker: { colors: [COLORS.gold, COLORS.navy, COLORS.navyFaint] }, textinfo: 'label+percent', domain: { row: 1, column: 1 }, name: 'Revenue mix' },
+], {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: FONT,
+  grid: { rows: 2, columns: 2, pattern: 'independent' },
+  margin: { l: 50, r: 20, t: 30, b: 30 }, showlegend: false,
+}, commonConfig);
+</script>
+</body>
+</html>
