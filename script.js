@@ -9,7 +9,7 @@ const phrases = [
   'Data Analyst',
   'Gain Insights',
   'Crete Storytelling',
-  'Building '
+  'Building a Beautiful Dashboard'
 ];
 let phraseIdx = 0, charIdx = 0, deleting = false;
 const typedEl = document.getElementById('typed-text');
