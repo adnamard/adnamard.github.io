@@ -65,7 +65,7 @@
       </div>
 
       <div class="flex flex-wrap gap-4 fade-up visible" style="transition-delay:0.38s">
-        <a href="https://drive.google.com/file/d/1wNGuaW7IDrO99XTfwkxEuHIwgIORa3YB/view?usp=sharing" target="_blank" class="btn-primary">
+        <a href="https://drive.google.com/file/d/1m6mt4sm5j6vlweJhyF3arPaWpLHGKShY/view?usp=sharing" target="_blank" class="btn-primary">
           <i class="fas fa-download text-sm"></i> Download CV
         </a>
         <a href="#projects" class="btn-outline">
@@ -159,10 +159,86 @@
       </p>
     </div>
 
-    <!-- PROJECT 01 — Suez Canal (text left / visual right) -->
+     <div class="project-feature fade-up">
+      <div class="device-mockup floaty">
+    <div class="device-bar">
+      <span class="device-dot" style="background:#E4867A"></span>
+      <span class="device-dot" style="background:var(--gold-soft)"></span>
+      <span class="device-dot" style="background:#8FBF8F"></span>
+    </div>
+    <div class="illustration-frame">
+  <svg viewBox="0 0 200 200" width="230" height="230">
+    
+    <!-- Elemen 1: Sepeda Minimalis (Mengapung/Floaty) -->
+    <g class="floaty">
+      <!-- Roda Depan & Belakang -->
+      <circle cx="65" cy="120" r="22" stroke="var(--navy)" stroke-width="3" fill="none"/>
+      <circle cx="135" cy="120" r="22" stroke="var(--navy)" stroke-width="3" fill="none"/>
+      <circle cx="65" cy="120" r="4" fill="var(--gold)"/>
+      <circle cx="135" cy="120" r="4" fill="var(--gold)"/>
+
+      <!-- Rangka Sepeda (Frame) -->
+      <path d="M65 120 L85 92 L115 92 L135 120 M85 92 L100 120 L115 92 M100 120 L100 82" 
+            stroke="var(--navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+      <!-- Stang & Sadel -->
+      <path d="M80 82 h12" stroke="var(--gold-soft)" stroke-width="4" stroke-linecap="round"/> <!-- Sadel -->
+      <path d="M112 82 h10 L125 75" stroke="var(--navy)" stroke-width="3" stroke-linecap="round" fill="none"/> <!-- Stang -->
+    </g>
+
+    <!-- Elemen 2: Pin Lokasi / Bintang Sewa (Drift) -->
+    <g class="drift">
+      <!-- Icon Pin Lokasi Peta -->
+      <path d="M145 45 C138 45 132 51 132 58 C132 68 145 80 145 80 C145 80 158 68 158 58 C158 51 152 45 145 45 Z" fill="var(--gold)"/>
+      <circle cx="145" cy="57" r="4" fill="var(--soft-white)"/>
+    </g>
+
+    <!-- Elemen 3: Badge / Kunci / Card Rent (Floaty + Delay) -->
+    <g class="floaty" style="animation-delay:1s">
+      <!-- Kartu / Ticket Rent -->
+      <rect x="35" y="48" width="48" height="30" rx="6" fill="var(--soft-white)" stroke="var(--gold)" stroke-width="2"/>
+      <!-- Icon Sepeda Kecil / Teks Kartu -->
+      <circle cx="47" cy="63" r="5" stroke="var(--navy)" stroke-width="1.5" fill="none"/>
+      <circle cx="60" cy="63" r="5" stroke="var(--navy)" stroke-width="1.5" fill="none"/>
+      <line x1="70" y1="58" x2="77" y2="58" stroke="var(--navy-35)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="70" y1="66" x2="75" y2="66" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+  </svg>
+</div>
+  </div>
+  <div>
+    <p class="project-index">Project 01</p>
+    <p class="project-category mt-2">Exploratory Data Analysis · Demand Forecasting</p>
+    <h3 class="project-name serif">Bike Rental, is it really growing?</h3>
+    <p class="project-desc">
+      An interactive analytics dashboard exploring how weather conditions, seasonal shifts, weekdays, and peak hours drive urban bike-sharing demand.
+    </p>
+    <div class="project-problem">
+      <b>Business problem:</b> Unpredictable commute spikes caused bike shortages at high-demand stations during morning/evening rush hours, while other stations remained overstocked, leading to lost rental revenue and high rebalancing costs.
+    </div>
+    <div class="project-tech">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Pandas</span>
+      <span class="tech-tag">Seaborn</span>
+      <span class="tech-tag">Streamlit</span>
+    </div>
+    <div class="project-actions">
+      <a href="https://rentalbike-analyze.streamlit.app/" target="_blank" class="btn-primary">
+        <i class="fas fa-chart-line text-sm"></i> View Dashboard
+      </a>
+      <a href="https://github.com/adnamard/Rental-Bike-Dashboard" target="_blank" class="btn-icon" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>  
+</div>
+
+
+    <!-- PROJECT 02 — Suez Canal (text left / visual right) -->
     <div class="project-feature fade-up">
       <div>
-        <p class="project-index">Project 01</p>
+        <p class="project-index">Project 02</p>
         <p class="project-category mt-2">Data Storytelling · Operations Analytics</p>
         <h3 class="project-name serif">Can One Ship Break Global Trade?</h3>
         <p class="project-desc">
@@ -182,10 +258,7 @@
           <a href="https://maritime-challenge.streamlit.app/" target="_blank" class="btn-primary">
             <i class="fas fa-chart-line text-sm"></i> View Dashboard
           </a>
-          <a href="projects/suez-canal-shipping-disruption.html" class="btn-outline">
-            Read Case Study <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-          <a href="https://github.com/adnamard" target="_blank" class="btn-icon" aria-label="GitHub">
+          <a href="https://github.com/adnamard/Maritime-journey" target="_blank" class="btn-icon" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
@@ -212,10 +285,12 @@
       </div>
     </div>
 
-    <!-- PROJECT 02 — Sales Dashboard (visual left / text right) -->
+
+   
+    <!-- PROJECT 03 — Sales Dashboard (visual left / text right) -->
     <div class="project-feature reverse fade-up">
       <div>
-        <p class="project-index">Project 02</p>
+        <p class="project-index">Project 03</p>
         <p class="project-category mt-2">Business Intelligence · Data Visualization</p>
         <h3 class="project-name serif">Market Sales Performance Dashboard</h3>
         <p class="project-desc">
@@ -237,9 +312,7 @@
           <a href="https://sales-market-dashboard-adnamar.streamlit.app/" target="_blank" class="btn-primary">
             <i class="fas fa-external-link-alt text-sm"></i> Live Demo
           </a>
-          <a href="projects/sales-market-dashboard.html" class="btn-outline">
-            Read Case Study <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+          
           <a href="https://github.com/adnamard/Sales-Market-Dashboard" target="_blank" class="btn-icon" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
@@ -293,7 +366,7 @@
         </div>
       </div>
       <div>
-        <p class="project-index">Project 03</p>
+        <p class="project-index">Project 04</p>
         <p class="project-category mt-2">Remote Sensing · Geospatial Analytics</p>
         <h3 class="project-name serif">Coastal Land Change — North Jakarta</h3>
         <p class="project-desc">
@@ -311,13 +384,11 @@
           <span class="tech-tag">Geemap</span>
         </div>
         <div class="project-actions">
-          <a href="https://github.com/adnamard" target="_blank" class="btn-primary">
+          <a href="https://dinamika-pesisir-jakarta.streamlit.app/" target="_blank" class="btn-primary">
             <i class="fas fa-external-link-alt text-sm"></i> Live Demo
           </a>
-          <a href="projects/coastal-land-change.html" class="btn-outline">
-            Read Case Study <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-          <a href="https://github.com/adnamard" target="_blank" class="btn-icon" aria-label="GitHub">
+
+          <a href="https://github.com/adnamard/Dinamika-Pesisir-Jakarta" target="_blank" class="btn-icon" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
@@ -342,7 +413,7 @@
         </svg>
       </div>
       <div>
-        <p class="project-index">Project 04</p>
+        <p class="project-index">Project 05</p>
         <p class="project-category mt-2">Computer Vision · Transfer Learning</p>
         <h3 class="project-name serif">Reusable vs. Disposable Container Classifier</h3>
         <p class="project-desc">
@@ -362,9 +433,6 @@
         <div class="project-actions">
           <a href="https://huggingface.co/spaces/Adnamar/Tumbler-detection" target="_blank" class="btn-primary">
             <i class="fas fa-external-link-alt text-sm"></i> Live Demo
-          </a>
-          <a href="projects/tumbler-classifier.html" class="btn-outline">
-            Read Case Study <i class="fas fa-arrow-right text-xs"></i>
           </a>
           <a href="https://github.com/adnamard/Tumblr-Detection" target="_blank" class="btn-icon" aria-label="GitHub">
             <i class="fab fa-github"></i>
@@ -395,7 +463,7 @@
         </svg>
       </div>
       <div>
-        <p class="project-index">Project 05</p>
+        <p class="project-index">Project 06</p>
         <p class="project-category mt-2">Computer Vision · Deep Learning</p>
         <h3 class="project-name serif">Tabir — Real-Time Sign Language Detection</h3>
         <p class="project-desc">
@@ -415,9 +483,6 @@
         <div class="project-actions">
           <a href="https://melodic-fudge-91078b.netlify.app/" target="_blank" class="btn-primary">
             <i class="fas fa-external-link-alt text-sm"></i> Live Demo
-          </a>
-          <a href="projects/sign-language-detection.html" class="btn-outline">
-            Read Case Study <i class="fas fa-arrow-right text-xs"></i>
           </a>
           <a href="https://github.com/adnamard/tabir-official" target="_blank" class="btn-icon" aria-label="GitHub">
             <i class="fab fa-github"></i>
@@ -447,7 +512,7 @@
         </svg>
       </div>
       <div>
-        <p class="project-index">Project 06</p>
+        <p class="project-index">Project 07</p>
         <p class="project-category mt-2">Machine Learning · Recommender System</p>
         <h3 class="project-name serif">Memorabilia — Book Recommendation System</h3>
         <p class="project-desc">
@@ -467,9 +532,6 @@
         <div class="project-actions">
           <a href="https://www.canva.com/design/DAGH7-DqJGQ/JgxpttpFMlXDblRSSH94Ew/view" target="_blank" class="btn-primary">
             <i class="fas fa-external-link-alt text-sm"></i> Live Demo
-          </a>
-          <a href="projects/book-recommender.html" class="btn-outline">
-            Read Case Study <i class="fas fa-arrow-right text-xs"></i>
           </a>
           <a href="https://github.com/Memorabillia/Memorabillia" target="_blank" class="btn-icon" aria-label="GitHub">
             <i class="fab fa-github"></i>

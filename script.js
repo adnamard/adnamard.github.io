@@ -6,10 +6,10 @@
 
 /* ---- Typing animation ---- */
 const phrases = [
-  'Turning messy data into',
-  'clear decisions',
-  'honest stories',
-  'dashboards people open',
+  'Data Analyst',
+  'Gain Insights',
+  'Crete Storytelling',
+  'Building '
 ];
 let phraseIdx = 0, charIdx = 0, deleting = false;
 const typedEl = document.getElementById('typed-text');
